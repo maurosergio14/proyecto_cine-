@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +30,35 @@ public class Cliente_bd {
     }
 
     List<Cliente> obtenerCliente() {
-        return null;
+        List<Cliente> clientes = new ArrayList<Cliente>();
+
+        try {
+            String sql = "SELECT * FROM cliente;";
+
+            PreparedStatement ps = conex.prepareStatement(sql);
+
+            ResultSet resultSet = ps.executeQuery();
+
+            Cliente cliente;
+
+            while (resultSet.next()) {
+                cliente = new Cliente();
+
+                cliente.setId_cliente(resultSet.getInt("id_cliente"));
+                cliente.setNombre(resultSet.getString("nombre"));
+                cliente.setApellido(resultSet.getString("apellido"));
+                cliente.setDni(resultSet.getInt("dni"));
+                
+                clientes.add(cliente);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener la lista de clientes");
+        }
+
+        return clientes;
+
     }
 
     public void guardarCliente(Cliente cliente) {
@@ -59,11 +88,11 @@ public class Cliente_bd {
         System.out.println("guardado");
     }
 
-    public void borrarCliente(Cliente cliente) {
+    public void borrarCliente(int id) {
         try {
-            String sql = "DELETE FROM cliente WHERE id_dni =?;";
+            String sql = "DELETE FROM cliente WHERE id_cliente =?;";
             PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            //ps.setInt(1,);
+            ps.setInt(1, id);
             ps.executeUpdate();
             ps.close();
             //  int x=Integer.parseInt(JOptionPane.showInputDialog("introduzca el id a borrar"));
@@ -72,12 +101,50 @@ public class Cliente_bd {
         }
     }
 
-    public void actualizarCliente(int dni) {
+    public void actualizarCliente(Cliente cliente) {
+        try {
+            String sql = "UPDATE cliente SET nombre=?,apellido=?,dni=?;";
+            PreparedStatement ps = conex.prepareStatement(sql);
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getApellido());
+            ps.setInt(3, cliente.getDni());
+
+            ps.setInt(4, cliente.getId_cliente());
+
+            ps.executeUpdate();
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error al actualizar cliente" + ex.getMessage());
+        }
 
     }
 
-    public Cliente buscarCliente(int dni) {
-        return null;
+    public Cliente buscarCliente(int id) {
+        Cliente cliente = null;
+
+        try {
+            String sql = "SELECT * FROM cliente WHERE id_cliente=?;";
+            PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                cliente = new Cliente();
+                cliente.setId_cliente(rs.getInt("id_cliente"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                cliente.setDni(rs.getInt("dni"));
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar cliente por ID" + ex.getMessage());
+        }
+
+        return cliente;
     }
 
 }
