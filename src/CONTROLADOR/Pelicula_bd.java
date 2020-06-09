@@ -44,5 +44,4 @@ public class Pelicula_bd {
     Pelicula buscarPelicula(int id_pelicula) {
         return null;
     }
-
 }
