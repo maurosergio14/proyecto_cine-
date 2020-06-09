@@ -5,7 +5,7 @@ package MODELO;
  * @author grupo 4
  */
 public class Cliente {
-   private int id_cliente=1;
+   private int id_cliente=-1;
    private String nombre;
    private String apellido;
    private int dni;
