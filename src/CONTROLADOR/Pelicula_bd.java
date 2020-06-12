@@ -107,7 +107,7 @@ public class Pelicula_bd {
 
     }
 
-    void actualizarPelicula(Pelicula pelicula) {
+    public void actualizarPelicula(Pelicula pelicula) {
 
         try {
             String sql = "UPDATE pelicula SET titulo=?, genero=?, duracion=?,auto=? idioma=?;";

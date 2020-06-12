@@ -25,7 +25,7 @@ public class Butaca {
         this.fila = fila;
         this.columna = columna;
     }
-
+  
     public int getId_butaca() {
         return id_butaca;
     }
