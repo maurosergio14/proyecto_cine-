@@ -1,4 +1,3 @@
-
 package VISTA;
 
 import CONTROLADOR.Cliente_bd;
@@ -11,18 +10,22 @@ import java.sql.Connection;
  * @author grupo 4
  */
 public class main {
+
     public static void main(String[] args) throws ClassNotFoundException {
-         Conexion cargar = null;
+
         try {
-            cargar = new Conexion();
+            Conexion cargar = new Conexion();
+            Connection con = cargar.getConex();
+            System.out.println("Conectado");
+
+            Cliente juan = new Cliente("juan", "perez", 22222);
+
+            Cliente_bd ad = new Cliente_bd(cargar);
+
+            ad.guardarCliente(juan);
+
         } catch (ClassNotFoundException ex) {
-            System.out.println("error al conectar");
+            System.out.println(ex.getMessage());
         }
-        Connection conex = cargar.getConex();
-        Cliente cliente1=new Cliente(1111, "as", "fe",1233);
-        Cliente_bd cbd1=new Cliente_bd(cargar);
-        cbd1.guardarCliente(cliente1);
-        
-       
     }
 }

@@ -63,18 +63,17 @@ public class Cliente_bd {
 
     public void guardarCliente(Cliente cliente) {
         try {
-            String sql = "INSERT INTO cliente (id_cliente , nombre , apellido,dni) VALUES ( ? , ? , ? , ?  );";
+            String sql = "INSERT INTO cliente  (nombre , apellido,dni) VALUES (? , ? , ?  );";
             PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, cliente.getId_cliente());
-            ps.setString(2, cliente.getNombre());
-            ps.setString(3, cliente.getApellido());
-            ps.setInt(4, cliente.getDni());
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getApellido());
+            ps.setInt(3, cliente.getDni());
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
 
             if (rs.next()) {
-                cliente.id_cliente(rs.getInt(1));
+                cliente.setId_cliente(rs.getInt(1));
 
             } else {
                 System.out.println("No se pudo obtener el id luego de insertar un cliente");

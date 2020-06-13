@@ -13,8 +13,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(int id_cliente, String nombre, String apellido,int dni) {
-        this.id_cliente = id_cliente;
+    public Cliente(String nombre, String apellido,int dni) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni=dni;
