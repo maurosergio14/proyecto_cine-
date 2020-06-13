@@ -13,8 +13,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(int id_cliente, String nombre, String apellido,int dni) {
-        this.id_cliente = id_cliente;
+    public Cliente( String nombre, String apellido,int dni) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni=dni;
@@ -55,12 +54,10 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "dni=" + id_cliente + ", apellido=" + apellido + '}';
+        return "Cliente "+"id_cliente= " +id_cliente +" nombre= " +nombre+ " dni= " + dni + " apellido= " + apellido ;
     }
 
-    /*public void id_cliente(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
+  
 
    
 
