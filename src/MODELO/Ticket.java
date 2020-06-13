@@ -14,8 +14,7 @@ public class Ticket {
 
     public Ticket() {
     }
-    public Ticket(int id_ticket, Cliente cliente, Sala sala, Pelicula pelicula, String fecha, Butaca butaca) {
-        this.id_ticket = id_ticket;
+    public Ticket(Cliente cliente, Sala sala, Pelicula pelicula, String fecha, Butaca butaca) {
         this.cliente = cliente;
         this.sala = sala;
         this.pelicula = pelicula;

@@ -29,7 +29,7 @@ public class Cliente_bd {
         }
     }
 
-    List<Cliente> obtenerCliente() {
+    public List<Cliente> obtenerCliente() {
         List<Cliente> clientes = new ArrayList<Cliente>();
 
         try {

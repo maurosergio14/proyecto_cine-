@@ -54,7 +54,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "dni=" + id_cliente + ", apellido=" + apellido + '}';
+        return "Cliente: " + "dni: = " +"\n" + id_cliente + "apellido: = " +"\n" + apellido + '}';
     }
 
     public void id_cliente(int aInt) {
