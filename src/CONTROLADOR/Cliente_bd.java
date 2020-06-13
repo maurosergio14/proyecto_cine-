@@ -29,7 +29,9 @@ public class Cliente_bd {
         }
     }
 
-    List<Cliente> obtenerCliente() {
+
+
+    public List<Cliente> obtenerCliente() {
         List<Cliente> clientes = new ArrayList<Cliente>();
 
         try {
@@ -64,12 +66,11 @@ public class Cliente_bd {
 
     public void guardarCliente(Cliente cliente) {
         try {
-            String sql = "INSERT INTO cliente (id_cliente , nombre , apellido,dni) VALUES ( ? , ? , ? , ?  );";
+            String sql = "INSERT INTO cliente  (nombre , apellido,dni) VALUES (? , ? , ?  );";
             PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, cliente.getId_cliente());
-            ps.setString(2, cliente.getNombre());
-            ps.setString(3, cliente.getApellido());
-            ps.setInt(4, cliente.getDni());
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getApellido());
+            ps.setInt(3, cliente.getDni());
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -89,11 +90,17 @@ public class Cliente_bd {
         System.out.println("guardado");
     }
 
+
     public void borrarCliente(int dni ) {
+
         try {
+
             String sql = "DELETE FROM cliente WHERE dni =?;";
-            PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            PreparedStatement ps = conex.prepareStatement(sql);
+
             ps.setInt(1, dni);
+
             ps.executeUpdate();
             ps.close();
             //  int x=Integer.parseInt(JOptionPane.showInputDialog("introduzca el id a borrar"));
@@ -103,7 +110,8 @@ public class Cliente_bd {
     }
 
     public void actualizarCliente(Cliente cliente) {
-  try {
+
+        try {
             String sql = "UPDATE cliente SET nombre=?,apellido=?,dni=?;";
             PreparedStatement ps = conex.prepareStatement(sql);
             ps.setString(1, cliente.getNombre());
@@ -118,6 +126,8 @@ public class Cliente_bd {
         } catch (SQLException ex) {
             System.out.println("Error al actualizar cliente" + ex.getMessage());
         }
+
+          
     }
 
     public Cliente buscarCliente(int dni ) {
@@ -145,7 +155,7 @@ public class Cliente_bd {
             System.out.println("Error al buscar cliente por dni" + ex.getMessage());
         }
 
-        return cliente;
+            return cliente;
     }
     
 

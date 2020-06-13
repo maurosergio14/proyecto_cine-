@@ -1,4 +1,3 @@
-
 package MODELO;
 
 import java.util.List;
@@ -8,68 +7,38 @@ import java.util.Map;
  * @author grupo 4
  */
 public class Sala {
-   private int id_sala;
-   private String nombre;
-   private int horario;
-   private List butacas;
-   private boolean estadoButacas;
+
+    private int id_sala;
+    //private String nombre;
+    private String ubicacion;
+    //private List butacas;
 
     public Sala() {
     }
 
-    public Sala(/*int id_sala,*/String nombre, int horario,List butacas, boolean estadoButacas) {
-        //this.id_sala = id_sala;
-        this.nombre = nombre;
-        this.horario = horario;
-        this. butacas =  butacas;
-        this.estadoButacas = estadoButacas;
+    public Sala(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
-
-    public int getId() {
+    
+    public int getId_sala() {
         return id_sala;
     }
 
-    public void setId(int id) {
-        this.id_sala = id;
+    public void setId_sala(int id_sala) {
+        this.id_sala = id_sala;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getUbicacion() {
+        return ubicacion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
-
-    public int getHorario() {
-        return horario;
-    }
-
-    public void setHorario(int horario) {
-        this.horario = horario;
-    }
-
-    public List getButacas() {
-        return butacas;
-    }
-
-    public List setButacas(List butacas) {
-        this.butacas = butacas;
-       return butacas;
-    }
-
-    public boolean isEstadoButacas() {
-        return estadoButacas;
-    }
-
-    public void setEstadoButacas(boolean estadoButacas) {
-        this.estadoButacas = estadoButacas;
-    }
-
+  
     @Override
     public String toString() {
-        return "Sala{" + "id=" + id_sala + ", nombre=" + nombre + '}';
+        return "Sala{" + "id=" + id_sala + ", nombre=" + + '}';
     }
-    
-    
+
 }

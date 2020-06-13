@@ -5,7 +5,11 @@ package MODELO;
  * @author grupo 4
  */
 public class Cliente {
+
    private int id_cliente;
+
+   //private int id_cliente=-1;
+
    private String nombre;
    private String apellido;
    private int dni;
@@ -13,7 +17,9 @@ public class Cliente {
     public Cliente() {
     }
 
+
     public Cliente( String nombre, String apellido,int dni) {
+
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni=dni;
@@ -54,13 +60,14 @@ public class Cliente {
 
     @Override
     public String toString() {
+
         return "Cliente "+"id_cliente= " +id_cliente +" nombre= " +nombre+ " dni= " + dni + " apellido= " + apellido ;
     }
 
-  
+      
 
    
 
   
     
-}
+    }
