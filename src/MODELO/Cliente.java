@@ -5,7 +5,7 @@ package MODELO;
  * @author grupo 4
  */
 public class Cliente {
-   private int id_cliente=1;
+   private int id_cliente;
    private String nombre;
    private String apellido;
    private int dni;
@@ -58,9 +58,9 @@ public class Cliente {
         return "Cliente{" + "dni=" + id_cliente + ", apellido=" + apellido + '}';
     }
 
-    public void id_cliente(int aInt) {
+    /*public void id_cliente(int aInt) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
 
    
 

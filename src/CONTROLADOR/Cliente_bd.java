@@ -45,7 +45,7 @@ public class Cliente_bd {
             ResultSet rs = ps.getGeneratedKeys();
 
             if (rs.next()) {
-                cliente.id_cliente(rs.getInt(1));
+                cliente.setId_cliente(rs.getInt(1));
 
             } else {
                 System.out.println("No se pudo obtener el id luego de insertar un cliente");

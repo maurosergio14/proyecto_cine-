@@ -19,7 +19,7 @@ public class main {
             System.out.println("error al conectar");
         }
         Connection conex = cargar.getConex();
-        Cliente cliente1=new Cliente(1111, "as", "fe",1233);
+        Cliente cliente1=new Cliente(54488, "zxxxs", "fssse",1233);
         Cliente_bd cbd1=new Cliente_bd(cargar);
         cbd1.guardarCliente(cliente1);
         
