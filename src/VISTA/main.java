@@ -14,31 +14,22 @@ public class main {
 
     public static void main(String[] args) throws ClassNotFoundException {
 
-        try {
-            Conexion cargar = new Conexion();
-            Connection con = cargar.getConex();
-            System.out.println("Conectado");
 
-            //Cliente juan = new Cliente("juan", "perez", 22222);
-            Cliente_bd ad = new Cliente_bd(cargar);
-
-            //ad.guardarCliente(juan);
-            //ad.buscarCliente(1);
-               System.out.println(ad.buscarCliente(1));
-           
-
-        } catch (ClassNotFoundException ex) {
-            System.out.print(ex.getMessage());
+        Conexion cargar = new Conexion();
+        Connection conex = cargar.getConex();
+        
+        //prueba de creacion de la clase cliente y cliente_bd
+        Cliente cliente1=new Cliente("agos", "ella",104);
+        Cliente_bd cbd1=new Cliente_bd(cargar);
+        
+        cbd1.guardarCliente(cliente1);
+       // cbd1.borrarCliente(1331);
+       // System.out.println(cbd1.buscarCliente(101));
+       //cbd1.actualizarCliente(cliente1);
+       List<Cliente> lista=cbd1.obtenerCliente();
+        for (Cliente cliente : lista) {
+            System.out.println(cliente.toString());
         }
-
-      //  Connection conex = cargar.getConex();
-       // Cliente cliente1=new Cliente("luis", "cris",1331);
-      //  Cliente_bd cbd1=new Cliente_bd(cargar);
-        //cbd1.guardarCliente(cliente1);
-        //cbd1.borrarCliente(1331);
-        //System.out.println(cbd1.buscarCliente(123));
-       //probando
        
-
     }
 }

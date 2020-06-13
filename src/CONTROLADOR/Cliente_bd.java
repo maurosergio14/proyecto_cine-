@@ -110,15 +110,13 @@ public class Cliente_bd {
     }
 
     public void actualizarCliente(Cliente cliente) {
-
         try {
             String sql = "UPDATE cliente SET nombre=?,apellido=?,dni=?;";
             PreparedStatement ps = conex.prepareStatement(sql);
             ps.setString(1, cliente.getNombre());
             ps.setString(2, cliente.getApellido());
             ps.setInt(3, cliente.getDni());
-
-            ps.setInt(4, cliente.getId_cliente());
+           
 
             ps.executeUpdate();
             ps.close();
