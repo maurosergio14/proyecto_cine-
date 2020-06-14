@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-06-2020 a las 23:23:43
+-- Tiempo de generación: 13-06-2020 a las 16:16:59
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -48,6 +48,13 @@ CREATE TABLE `cliente` (
   `dni` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id_cliente`, `nombre`, `apellido`, `dni`) VALUES
+(1, 'juan', 'perez', 22222);
+
 -- --------------------------------------------------------
 
 --
@@ -72,6 +79,8 @@ CREATE TABLE `pelicula` (
   `id_pelicula` int(8) NOT NULL,
   `titulo` varchar(20) NOT NULL,
   `genero` varchar(20) NOT NULL,
+  `duracion` varchar(50) NOT NULL,
+  `autor` varchar(50) NOT NULL,
   `idioma` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -83,9 +92,7 @@ CREATE TABLE `pelicula` (
 
 CREATE TABLE `sala` (
   `id_sala` int(8) NOT NULL,
-  `cantidadbutacas` int(50) NOT NULL,
-  `columnas` int(50) NOT NULL,
-  `filas` int(50) NOT NULL
+  `ubucacion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -167,7 +174,7 @@ ALTER TABLE `butaca`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `funcionverpelicula`
