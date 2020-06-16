@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author grupo 4
@@ -29,8 +30,6 @@ public class Cliente_bd {
         }
     }
 
-
-
     public List<Cliente> obtenerCliente() {
         List<Cliente> clientes = new ArrayList<Cliente>();
 
@@ -50,7 +49,7 @@ public class Cliente_bd {
                 cliente.setNombre(resultSet.getString("nombre"));
                 cliente.setApellido(resultSet.getString("apellido"));
                 cliente.setDni(resultSet.getInt("dni"));
-                
+
                 clientes.add(cliente);
             }
             ps.close();
@@ -61,7 +60,6 @@ public class Cliente_bd {
 
         return clientes;
 
-   
     }
 
     public void guardarCliente(Cliente cliente) {
@@ -90,8 +88,7 @@ public class Cliente_bd {
         System.out.println("guardado");
     }
 
-
-    public void borrarCliente(int dni ) {
+    public void borrarCliente(int dni) {
 
         try {
 
@@ -103,7 +100,7 @@ public class Cliente_bd {
 
             ps.executeUpdate();
             ps.close();
-            //  int x=Integer.parseInt(JOptionPane.showInputDialog("introduzca el id a borrar"));
+
         } catch (SQLException ex) {
             System.out.println("Error al borrar un alumno: " + ex.getMessage());
         }
@@ -111,12 +108,11 @@ public class Cliente_bd {
 
     public void actualizarCliente(Cliente cliente) {
         try {
-            String sql = "UPDATE cliente SET nombre=?,apellido=?,dni=?;";
+            String sql = "UPDATE cliente SET nombre=?,apellido=? WHERE dni = ?;";
             PreparedStatement ps = conex.prepareStatement(sql);
             ps.setString(1, cliente.getNombre());
             ps.setString(2, cliente.getApellido());
             ps.setInt(3, cliente.getDni());
-           
 
             ps.executeUpdate();
             ps.close();
@@ -125,17 +121,16 @@ public class Cliente_bd {
             System.out.println("Error al actualizar cliente" + ex.getMessage());
         }
 
-          
     }
 
-    public Cliente buscarCliente(int dni ) {
-    Cliente cliente = null;
+    public Cliente buscarCliente(int dni) {
+        Cliente cliente = null;
 
         try {
             String sql = "SELECT * FROM cliente WHERE dni=?;";
             PreparedStatement ps = conex.prepareStatement(sql);
             ps.setInt(1, dni);
-            
+
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -145,7 +140,7 @@ public class Cliente_bd {
                 cliente.setApellido(rs.getString("apellido"));
                 cliente.setDni(rs.getInt("dni"));
                 //System.out.println(cliente);
-                
+
             }
             ps.close();
 
@@ -153,8 +148,7 @@ public class Cliente_bd {
             System.out.println("Error al buscar cliente por dni" + ex.getMessage());
         }
 
-            return cliente;
+        return cliente;
     }
-    
 
 }

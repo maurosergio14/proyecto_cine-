@@ -1,6 +1,7 @@
 
 package CONTROLADOR;
 
+import MODELO.Butaca;
 import MODELO.Cliente;
 import MODELO.Conexion;
 import MODELO.Ticket;
@@ -10,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.DriverManager;
 import java.util.List;
 
 /**
@@ -30,22 +32,48 @@ import java.util.List;
         }
     }
     
-    void generarTicket(Ticket ticket) throws SQLException{
-         String sql = "INSERT INTO ticket ('id_ticket', 'id_cliente', 'id_verPelicula', 'id_butaca', 'fecha_ticket', 'hora_ticket', 'monto', 'estado', 'metodo_de_pago') VALUE (?,?,?,?,?,?,?,?,?)";
-         PreparedStatement PS = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); 
-         PS.setInt(1, ticket.getId_ticket());
-         PS.setInt(2, ticket.getCliente().getDni());
-         PS.setInt(3, ticket.getPelicula().getId());
-         PS.setInt(4, ticket.getButaca().getId_butaca());
-         PS.setDate(5, ticket.getFecha());
-         PS.setDate(6, ticket.getHora());
-         PS.setDouble(7, ticket.getmonto());
-         PS.setBoolean(8, ticket.estado());
-         PS.setString(9, ticket.pago());
-         
+    void generarTicket(Ticket ticket){
+        
+        try {
+            
+            PreparedStatement pst = conexion.prepareStatement("insert into ticket values(?,?,?,?,?,?,?,?,?)");
+            
+            pst.setString(1, "0");
+            
+            Cliente idCliente = ticket.getCliente();
+            pst.setInt(2, idCliente.getId_cliente());
+            
+            Pelicula idPelicula = ticket.getPelicula();
+            pst.setInt(3, idPelicula.getId());
+            
+            Butaca idButaca = ticket.getButaca();
+            pst.setInt(4, idButaca.getId_butaca());
+            
+            //pst.setString(5, ticket.getFecha());
+            //pst.setString(6, ticket.getHora());
+            pst.setDouble(7, ticket.getMonto());
+            pst.setInt(8, 21);
+            pst.setString(9, ticket.getMetodoDePago());
+            pst.executeUpdate();
+            
+            
+        } catch (Exception e) {
+            System.out.println("ERROR"+e);
+        }
+        
     }
     void borrarTicket(int ticket){
-        
+        try {
+            
+            int ID = ticket;
+            PreparedStatement pst = conexion.prepareStatement("delete from ticket where id_ticket = ?");
+            pst.setInt(1, ID);
+            pst.executeUpdate();
+
+            
+        } catch (Exception e) {
+            System.out.println("Error al eliminar");
+        }
     }
     
     void modificaTiket(int ticket){

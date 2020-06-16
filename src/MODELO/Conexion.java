@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  * @author grupo 4
  */
 public class Conexion {
-  private String url="jdbc:mysql://localhost/proyecto-cine";
+  private String url="jdbc:mysql://localhost/su boleteria_cine";
   private String usuario="root";
   private String password="";
   public Connection conexion=null;
@@ -18,7 +18,7 @@ public class Conexion {
     public Conexion() throws ClassNotFoundException {
           Class.forName("org.mariadb.jdbc.Driver");
         try {
-            conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/proyecto-cine", "root", "");
+            conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/su boleteria_cine", "root", "");
             System.out.println("conexion exitosa!!!!!");
         } catch (SQLException ex) {
             System.out.println("error al conectar" + ex.getMessage());
