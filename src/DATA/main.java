@@ -1,17 +1,21 @@
-/*package VISTA;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package DATA;
 
 import CONTROLADOR.Cliente_bd;
 import MODELO.Cliente;
 import MODELO.Conexion;
+import MODELO.Sala;
 import java.sql.Connection;
 import java.util.List;
-*/
 
 /**
  *
  * @author grupo 4
  */
-/*
 public class main {
 
     public static void main(String[] args) throws ClassNotFoundException {
@@ -50,8 +54,12 @@ public class main {
         List<Cliente> lista = cbd.obtenerCliente();
         for (Cliente cliente : lista) {
             System.out.println(cliente.toString());
-        }
-
+        } 
+        
+          
+        
+       
+        
+        
     }
 }
-*/
