@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-06-2020 a las 23:23:43
+-- Tiempo de generación: 21-06-2020 a las 22:54:47
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `su_boleteria_cine`
+-- Base de datos: `su boleteria_cine`
 --
 
 -- --------------------------------------------------------
@@ -30,9 +30,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `butaca` (
   `id_butaca` int(10) NOT NULL,
-  `id_sala` int(11) NOT NULL,
+  `id_verPelicula` int(11) NOT NULL,
   `fila` varchar(50) NOT NULL,
-  `columna` varchar(50) NOT NULL
+  `columna` varchar(50) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -47,6 +48,17 @@ CREATE TABLE `cliente` (
   `apellido` varchar(20) NOT NULL,
   `dni` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id_cliente`, `nombre`, `apellido`, `dni`) VALUES
+(1, 'juan', 'perez', 22222),
+(3, 'Cesar', 'Noso', 222),
+(4, 'Armando', 'Paredes', 223),
+(5, 'Monica', 'Galindo', 224),
+(6, 'nombre', 'apellido', 227);
 
 -- --------------------------------------------------------
 
@@ -72,6 +84,8 @@ CREATE TABLE `pelicula` (
   `id_pelicula` int(8) NOT NULL,
   `titulo` varchar(20) NOT NULL,
   `genero` varchar(20) NOT NULL,
+  `duracion` varchar(50) NOT NULL,
+  `autor` varchar(50) NOT NULL,
   `idioma` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -83,9 +97,7 @@ CREATE TABLE `pelicula` (
 
 CREATE TABLE `sala` (
   `id_sala` int(8) NOT NULL,
-  `cantidadbutacas` int(50) NOT NULL,
-  `columnas` int(50) NOT NULL,
-  `filas` int(50) NOT NULL
+  `ubucacion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -97,7 +109,6 @@ CREATE TABLE `sala` (
 CREATE TABLE `ticket` (
   `id_ticket` int(8) NOT NULL,
   `id_cliente` int(8) NOT NULL,
-  `id_verPelicula` int(8) NOT NULL,
   `id_butaca` int(10) NOT NULL,
   `fecha_ticket` datetime NOT NULL,
   `hora_ticket` datetime NOT NULL,
@@ -115,7 +126,7 @@ CREATE TABLE `ticket` (
 --
 ALTER TABLE `butaca`
   ADD PRIMARY KEY (`id_butaca`),
-  ADD KEY `id_sala` (`id_sala`);
+  ADD KEY `id_sala` (`id_verPelicula`);
 
 --
 -- Indices de la tabla `cliente`
@@ -149,8 +160,7 @@ ALTER TABLE `sala`
 --
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`id_ticket`),
-  ADD KEY `id_cliente` (`id_cliente`,`id_verPelicula`,`id_butaca`),
-  ADD KEY `id_verPelicula` (`id_verPelicula`),
+  ADD KEY `id_cliente` (`id_cliente`,`id_butaca`),
   ADD KEY `id_butaca` (`id_butaca`);
 
 --
@@ -167,7 +177,7 @@ ALTER TABLE `butaca`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `funcionverpelicula`
@@ -201,7 +211,7 @@ ALTER TABLE `ticket`
 -- Filtros para la tabla `butaca`
 --
 ALTER TABLE `butaca`
-  ADD CONSTRAINT `butaca_ibfk_1` FOREIGN KEY (`id_sala`) REFERENCES `sala` (`id_sala`);
+  ADD CONSTRAINT `butaca_ibfk_1` FOREIGN KEY (`id_verPelicula`) REFERENCES `funcionverpelicula` (`id_verPelicula`);
 
 --
 -- Filtros para la tabla `funcionverpelicula`
@@ -215,7 +225,6 @@ ALTER TABLE `funcionverpelicula`
 --
 ALTER TABLE `ticket`
   ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`),
-  ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`id_verPelicula`) REFERENCES `funcionverpelicula` (`id_verPelicula`),
   ADD CONSTRAINT `ticket_ibfk_3` FOREIGN KEY (`id_butaca`) REFERENCES `butaca` (`id_butaca`);
 COMMIT;
 
