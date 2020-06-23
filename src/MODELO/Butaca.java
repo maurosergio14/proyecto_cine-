@@ -9,7 +9,9 @@ public class Butaca {
     private Sala sala;
     private int fila;
     private String columna;
-
+    private FuncionVerPelicula verPelicula; // funcionVerPelicula
+    
+    
     public Butaca() {
     }
 
@@ -25,7 +27,25 @@ public class Butaca {
         this.fila = fila;
         this.columna = columna;
     }
+
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
+
+    public FuncionVerPelicula getVerPelicula() {
+        return verPelicula;
+    }
+
+    public void setVerPelicula(FuncionVerPelicula verPelicula) {
+        this.verPelicula = verPelicula;
+    }
   
+    
+    
     public int getId_butaca() {
         return id_butaca;
     }
