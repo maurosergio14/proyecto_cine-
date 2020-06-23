@@ -41,7 +41,7 @@ public class Pelicula_bd {
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
-
+            System.out.println("guardado");
             if (rs.next()) {
                 pelicula.setId(rs.getInt(1));
             } else {
@@ -72,8 +72,8 @@ public class Pelicula_bd {
                 pelicula.setId(resultSet.getInt("id_pelicula"));
                 pelicula.setTitulo(resultSet.getString("titulo"));
                 pelicula.setGenero(resultSet.getString("genero"));
-                pelicula.setDuracion(resultSet.getString("duracion"));
-                pelicula.setAutor(resultSet.getString("autor"));
+                // pelicula.setDuracion(resultSet.getString("duracion"));
+                //   pelicula.setAutor(resultSet.getString("autor"));
                 pelicula.setIdioma(resultSet.getString("idioma"));
 
                 peliculas.add(pelicula);
@@ -110,18 +110,17 @@ public class Pelicula_bd {
         try {
             String sql = "UPDATE pelicula SET titulo=?, genero=?,idioma=? WHERE id_pelicula = ?;";
             PreparedStatement ps = conex.prepareStatement(sql);
-            ps.executeUpdate();
             ps.setString(1, pelicula.getTitulo());
             ps.setString(2, pelicula.getGenero());
-            ps.setString(3, pelicula.getDuracion());
-          
-            ps.execute();
+            ps.setString(3, pelicula.getIdioma());
+         // ps.setString(3, pelicula.getDuracion());
+            
+            ps.executeUpdate();
             ps.close();
 
         } catch (SQLException ex) {
-            System.out.println("Error al actualizar pelicula"+ex.getMessage());
+            System.out.println("Error al actualizar pelicula" + ex.getMessage());
         }
-
     }
 
     public Pelicula buscarPelicula(int id_pelicula) {
@@ -138,8 +137,8 @@ public class Pelicula_bd {
                 pelicula.setId(resultSet.getInt("id_pelicula"));
                 pelicula.setTitulo(resultSet.getString("titulo"));
                 pelicula.setGenero(resultSet.getString("genero"));
-                pelicula.setDuracion(resultSet.getString("duracion"));
-                pelicula.setAutor(resultSet.getString("autor"));
+              //pelicula.setDuracion(resultSet.getString("duracion"));
+              //pelicula.setAutor(resultSet.getString("autor"));
                 pelicula.setIdioma(resultSet.getString("idioma"));
 
             }
