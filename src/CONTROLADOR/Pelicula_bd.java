@@ -31,14 +31,12 @@ public class Pelicula_bd {
 
     public void guardarPelicula(Pelicula pelicula) {
         try {
-            String sql = "INSERT INT pelicula(titulo,genero,duracion,autor,idioma)VALUES(?,?,?,?,?);";
+            String sql = "INSERT INTO pelicula (titulo,genero,idioma) VALUES(?,?,?);";
             PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, pelicula.getTitulo());
             ps.setString(2, pelicula.getGenero());
-            ps.setString(3, pelicula.getDuracion());
-            ps.setString(4, pelicula.getAutor());
-            ps.setString(5, pelicula.getIdioma());
+            ps.setString(3, pelicula.getIdioma());
 
             ps.executeUpdate();
 
@@ -110,23 +108,18 @@ public class Pelicula_bd {
     public void actualizarPelicula(Pelicula pelicula) {
 
         try {
-            String sql = "UPDATE pelicula SET titulo=?, genero=?, duracion=?,auto=? idioma=?;";
-
-            PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
+            String sql = "UPDATE pelicula SET titulo=?, genero=?,idioma=? WHERE id_pelicula = ?;";
+            PreparedStatement ps = conex.prepareStatement(sql);
             ps.executeUpdate();
-
             ps.setString(1, pelicula.getTitulo());
             ps.setString(2, pelicula.getGenero());
             ps.setString(3, pelicula.getDuracion());
-            ps.setString(3, pelicula.getAutor());
-            ps.setString(5, pelicula.getIdioma());
-
+          
             ps.execute();
             ps.close();
 
         } catch (SQLException ex) {
-            System.out.println("Error al actualizar pelicula");
+            System.out.println("Error al actualizar pelicula"+ex.getMessage());
         }
 
     }

@@ -15,6 +15,12 @@ public class Pelicula {
     public Pelicula() {
     }
 
+    public Pelicula(String titulo, String genero, String idioma) {
+        this.titulo = titulo;
+        this.genero = genero;
+        this.idioma = idioma;
+    }
+    
     public Pelicula(String titulo, String genero, String duracion, String autor, String idioma) {
         this.titulo = titulo;
         this.genero = genero;

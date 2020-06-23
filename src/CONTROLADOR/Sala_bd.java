@@ -15,17 +15,17 @@ import java.util.List;
  */
 public class Sala_bd {
 
-    Connection conex;
+    Connection conexion;
 
-    public Sala_bd(Connection conex) {
-        this.conex = conex;
+    public Sala_bd(Connection conexion) {
+        this.conexion = conexion;
     }
 
     void guardarSala(Sala sala) {
 
         try {
             String sql = "INSERT sala INTO (ubicacion);";
-            PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.executeQuery();
             ps.setString(1, sala.getUbicacion());
@@ -52,7 +52,7 @@ public class Sala_bd {
         try {
             String sql = "UPDATE sala SET ubicacion=?;";
 
-            PreparedStatement ps = conex.prepareStatement(sql);
+            PreparedStatement ps = conexion.prepareStatement(sql);
 
             ps.setString(1, sala.getUbicacion());
             ps.setInt(2, sala.getId_sala());
@@ -70,7 +70,7 @@ public class Sala_bd {
         Cliente cliente = null;
         try {
             String sql = "DELETE FROM sala WHERE id_sala=?;";
-            PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id_sala);
             ps.executeUpdate();
 
@@ -86,7 +86,7 @@ public class Sala_bd {
         Sala sala = null;
         try {
             String sql = "SELEC * FROM sala WHERE id_sala=?;";
-            PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id);
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
@@ -108,7 +108,7 @@ public class Sala_bd {
         try {
             String sql = "SELEC * FROM sala;";
 
-            PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet resultSet = ps.executeQuery();
 
             Sala sala;

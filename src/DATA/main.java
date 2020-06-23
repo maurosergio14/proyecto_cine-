@@ -34,18 +34,18 @@ public class main {
         Cliente_bd cbd = new Cliente_bd(cargar);
 
         //GUARDAR CLIENTE EN BD
-        cbd.guardarCliente(cliente1);
+   /*   cbd.guardarCliente(cliente1);
         cbd.guardarCliente(cliente2);
         cbd.guardarCliente(cliente3);
-        cbd.guardarCliente(cliente4);
+        cbd.guardarCliente(cliente4);   */
 
         //BORRAR UN CLIENTE DE BD MEDIANTE UN ID_DNI
         cbd.borrarCliente(1331);
 
         //ACTUALIZAR CLIENTE
-        cliente4.setApellido("apellido");
+    /*  cliente4.setApellido("apellido");
         cliente4.setNombre("nombre");
-        cbd.actualizarCliente(cliente4);
+        cbd.actualizarCliente(cliente4);    */
 
         //BUSCAR UN CLIENTE
         System.out.println(cbd.buscarCliente(224));

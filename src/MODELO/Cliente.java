@@ -17,6 +17,11 @@ public class Cliente {
     public Cliente() {
     }
 
+    public Cliente(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
 
     public Cliente(String nombre, String apellido,int dni) {
 
