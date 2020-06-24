@@ -35,25 +35,20 @@ import java.util.List;
         }
     }
     
-    void generarTicket(Ticket ticket){
+    public void generarTicket(Ticket ticket){
         
         try {
-            
             PreparedStatement pst = conexion.prepareStatement("insert into ticket values(?,?,?,?,?,?,?,?,?)");
             
             pst.setString(1, "0");
-            
             Cliente idCliente = ticket.getCliente();
             pst.setInt(2, idCliente.getId_cliente());
-            
             Pelicula idPelicula = ticket.getPelicula();
             pst.setInt(3, idPelicula.getId());
-            
             Butaca idButaca = ticket.getButaca();
             pst.setInt(4, idButaca.getId_butaca());
-            
-            //pst.setString(5, ticket.getFecha());
-            //pst.setString(6, ticket.getHora());
+            pst.setInt(5, ticket.getFecha1());
+            pst.setInt(6, ticket.getHora1());
             pst.setDouble(7, ticket.getMonto());
             pst.setInt(8, 21);
             pst.setString(9, ticket.getMetodoDePago());
@@ -65,7 +60,7 @@ import java.util.List;
         }
         
     }
-    void borrarTicket(int ticket){
+   public void borrarTicket(int ticket){
         try {
             
             int ID = ticket;
@@ -79,22 +74,22 @@ import java.util.List;
         }
     }
     
-    void modificaTiket(int ticket){
+   public  void modificaTiket(int ticket){
      
     }
     
-    void liberarButaca(Sala sala){
+   public  void liberarButaca(Sala sala){
         
     }
-    List <Pelicula> obtenerPeliculaHorario(int idPelicula,int idSala){
+   public List <Pelicula> obtenerPeliculaHorario(int idPelicula,int idSala){
         return null;
     }
     
-    List<Sala> obtenerSalaPelicula(int idSala,int Pelicula){
+  public  List<Sala> obtenerSalaPelicula(int idSala,int Pelicula){
         return null;  
     }
     
-    List <Ticket> ObtenerClienteFecha(int id_cliente,String fecha){
+   public List <Ticket> ObtenerClienteFecha(int id_cliente,String fecha){
       List<Ticket> listadeclinetes = new ArrayList<Ticket>();
 
         try {
@@ -110,7 +105,7 @@ import java.util.List;
             while (rs.next()) {
                
                 ticket=new Ticket();
-                ticket.setCliente(rs.getInt(id_cliente));//no encuentro el error
+               // ticket.setCliente(rs.getInt(id_cliente));//no encuentro el error
                 ticket.setFecha(rs.getDate(fecha));
 
                 listadeclinetes.add(ticket);
@@ -125,7 +120,7 @@ import java.util.List;
         return null;  
     }
                                 
-    void cantidadTicketPorFecha(String fecha){
+  public  void cantidadTicketPorFecha(String fecha){
        Ticket ticketporfechas = null;
         try {
             String sql = "SELECT * FROM ticket WHERE fecha_ticket=?;";
@@ -147,7 +142,7 @@ import java.util.List;
 
     }
     
-    void cantidadTicketPorPelicula(int id_pelicula){
+  public  void cantidadTicketPorPelicula(int id_pelicula){
         Ticket ticketporpelicula = null;
         try {
             String sql = "SELECT * FROM ticket WHERE id_pelicula=?;";

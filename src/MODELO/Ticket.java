@@ -11,12 +11,46 @@ public class Ticket {
     private Pelicula pelicula;
     private Date fecha;
     private Date hora;
+    private int fecha1;
+    private int hora1;
     private Butaca butaca;
     private double monto;
     private String metodoDePago;
 
     public Ticket() {
     }
+
+    public Ticket(Cliente cliente, Sala sala, Pelicula pelicula, int fecha1, int hora1, Butaca butaca, double monto, String metodoDePago) {
+        this.cliente = cliente;
+        this.sala = sala;
+        this.pelicula = pelicula;
+        this.fecha1 = fecha1;
+        this.hora1 = hora1;
+        this.butaca = butaca;
+        this.monto = monto;
+        this.metodoDePago = metodoDePago;
+    }
+
+    public int getFecha1() {
+        return fecha1;
+    }
+
+    public void setFecha1(int fecha1) {
+        this.fecha1 = fecha1;
+    }
+
+    public int getHora1() {
+        return hora1;
+    }
+
+    public void setHora1(int hora1) {
+        this.hora1 = hora1;
+    }
+    
+    
+    
+    
+    
     public Ticket(int id_ticket, Cliente cliente, Sala sala, Pelicula pelicula, Butaca butaca,double monto,String metodoDePago) {
         this.id_ticket = id_ticket;
         this.cliente = cliente;

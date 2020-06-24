@@ -375,8 +375,8 @@ public class FuncionVerPelicula_bd {
          while(rs.next()){
              butaca = new Butaca();
              butaca.setFila(rs.getInt("fila"));
-             butaca.setColumna(rs.getInt("columna"))//Int porque columnas seria int;
-             butaca.setEstado(rs.getInt("estado"));//Estado debe tener butaca
+             //butaca.setColumna(rs.getInt("columna"))//Int porque columnas seria int;
+            // butaca.setEstado(rs.getInt("estado"));//Estado debe tener butaca
              
             FuncionVerPelicula_bd pd = new FuncionVerPelicula_bd((Conexion) conex);
              

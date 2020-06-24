@@ -30,23 +30,16 @@ public class Pelicula_bd {
     }
 
     public void guardarPelicula(Pelicula pelicula) {
-        try {
-            String sql = "INSERT INTO pelicula (titulo,genero,idioma) VALUES(?,?,?);";
+              try {
+            String sql = "INSERT INTO pelicula  (titulo ,genero ,duracion ,autor , idioma) VALUES (?,?,?,?,?);";
             PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
             ps.setString(1, pelicula.getTitulo());
             ps.setString(2, pelicula.getGenero());
-            ps.setString(3, pelicula.getIdioma());
-
+            ps.setString(3, pelicula.getDuracion());
+            ps.setString(4, pelicula.getAutor());
+            ps.setString(5, pelicula.getIdioma());
+            System.out.println("subio");
             ps.executeUpdate();
-
-            ResultSet rs = ps.getGeneratedKeys();
-            System.out.println("guardado");
-            if (rs.next()) {
-                pelicula.setId(rs.getInt(1));
-            } else {
-                System.out.println("No se puedo obtener el id luego de insertar una pelicula");
-            }
 
             ps.close();
 
@@ -72,8 +65,8 @@ public class Pelicula_bd {
                 pelicula.setId(resultSet.getInt("id_pelicula"));
                 pelicula.setTitulo(resultSet.getString("titulo"));
                 pelicula.setGenero(resultSet.getString("genero"));
-                // pelicula.setDuracion(resultSet.getString("duracion"));
-                //   pelicula.setAutor(resultSet.getString("autor"));
+                pelicula.setDuracion(resultSet.getString("duracion"));
+                pelicula.setAutor(resultSet.getString("autor"));
                 pelicula.setIdioma(resultSet.getString("idioma"));
 
                 peliculas.add(pelicula);
@@ -109,13 +102,14 @@ public class Pelicula_bd {
 
         try {
             String sql = "UPDATE pelicula SET titulo = ?,genero = ?,duracion = ?,autor = ?,idioma = ? WHERE id_pelicula = ?;";
-            PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = conex.prepareStatement(sql);
             ps.setString(1, pelicula.getTitulo());
             ps.setString(2, pelicula.getGenero());
             ps.setString(3, pelicula.getDuracion());
             ps.setString(4, pelicula.getAutor());
             ps.setString(5, pelicula.getIdioma());
             ps.setInt(6, pelicula.getId());
+            System.out.println("actualizo");
             ps.executeUpdate();
             ps.close();
 

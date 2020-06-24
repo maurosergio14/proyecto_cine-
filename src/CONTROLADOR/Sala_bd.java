@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class Sala_bd {
 
-   private Connection conex;
+    private Connection conex;
 
     public Sala_bd() {
     }
@@ -24,28 +24,26 @@ public class Sala_bd {
     public Sala_bd(Connection conex) {
         this.conex = conex;
     }
-   
 
     public Sala_bd(Conexion conexion) {
 
-     conex = conexion.getConex();
+        conex = conexion.getConex();
         try {
-            conex= conexion.getConex();
+            conex = conexion.getConex();
         } catch (Exception ex) {
             System.out.println("Error al abrir al obtener la conexion" + ex.getMessage());
-        }    }
+        }
+    }
 
-   public void guardarSala(Sala sala) {
+    public void guardarSala(Sala sala) {
 
         try {
-            String sql = "INSERT sala INTO (ubicacion);";
+            String sql = "INSERT INTO sala (ubicacion) VALUES (?);";
             PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            ps.executeQuery();
             ps.setString(1, sala.getUbicacion());
 
             ps.executeUpdate();
-
             ResultSet rs = ps.getGeneratedKeys();
 
             if (rs.next()) {
@@ -61,15 +59,14 @@ public class Sala_bd {
 
     }
 
-   public void actualizarSala(Sala sala) {
-
+    public void actualizarSala(Sala sala) {
+        //UPDATE `sala` SET `id_sala`=[value-1],`ubicacion`=[value-2] WHERE 1
         try {
-            String sql = "UPDATE sala SET ubicacion=?;";
+            String sql = "UPDATE sala SET   ubicacion=? WHERE id_sala=? ;";
 
             PreparedStatement ps = conex.prepareStatement(sql);
-
-            ps.setString(1, sala.getUbicacion());
-            ps.setInt(2, sala.getId_sala());
+            ps.setInt(1, sala.getId_sala());
+            ps.setString(2, sala.getUbicacion());
 
             ps.executeUpdate();
             ps.close();
@@ -80,7 +77,7 @@ public class Sala_bd {
 
     }
 
-   public void borrarSala(int id_sala) {
+    public void borrarSala(int id_sala) {
         Cliente cliente = null;
         try {
             String sql = "DELETE FROM sala WHERE id_sala=?;";
@@ -96,11 +93,11 @@ public class Sala_bd {
 
     }
 
-   public Sala buscarSala(int id) {
+    public Sala buscarSala(int id) {
         Sala sala = null;
         try {
-            String sql = "SELEC * FROM sala WHERE id_sala=?;";
-            PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            String sql = "SELECT * FROM sala WHERE id_sala=?;";
+            PreparedStatement ps = conex.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
@@ -120,7 +117,7 @@ public class Sala_bd {
     public List<Sala> obtenerSala() {
         List<Sala> salas = new ArrayList<Sala>();
         try {
-            String sql = "SELEC * FROM sala;";
+            String sql = "SELECT * FROM sala;";
 
             PreparedStatement ps = conex.prepareStatement(sql);
             ResultSet resultSet = ps.executeQuery();
