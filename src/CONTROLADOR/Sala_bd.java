@@ -1,6 +1,6 @@
 package CONTROLADOR;
 
-import MODELO.Cliente;
+
 import MODELO.Conexion;
 import MODELO.Sala;
 import java.sql.Connection;
@@ -15,19 +15,14 @@ import java.util.List;
  * @author grupo 4
  */
 public class Sala_bd {
-
+ 
     private Connection conex;
 
     public Sala_bd() {
     }
 
-    public Sala_bd(Connection conex) {
-        this.conex = conex;
-    }
-
     public Sala_bd(Conexion conexion) {
-
-        conex = conexion.getConex();
+     conex = conexion.getConex();
         try {
             conex = conexion.getConex();
         } catch (Exception ex) {
@@ -35,21 +30,22 @@ public class Sala_bd {
         }
     }
 
-    public void guardarSala(Sala sala) {
+   public void guardarSala(Sala sala) {
 
         try {
-            String sql = "INSERT INTO sala (ubicacion) VALUES (?);";
+            String sql = "INSERT INTO sala (ubicacion)VALUE(?);";
             PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            ps.setString(1, sala.getUbicacion());
+            ps.setNString(1, sala.getUbicacion());
 
             ps.executeUpdate();
+
             ResultSet rs = ps.getGeneratedKeys();
 
             if (rs.next()) {
                 sala.setId_sala(rs.getInt(1));
             } else {
-                System.out.println("Nose puedo obtener el id de insertar una sala");
+                System.out.println("No se pudo obtener el id de insertar una sala");
             }
             ps.close();
 
@@ -59,16 +55,15 @@ public class Sala_bd {
 
     }
 
-    public void actualizarSala(Sala sala) {
-        //UPDATE `sala` SET `id_sala`=[value-1],`ubicacion`=[value-2] WHERE 1
+   public void actualizarSala(Sala sala) {
+
         try {
-            String sql = "UPDATE sala SET   ubicacion=? WHERE id_sala=? ;";
+            String sql = "UPDATE sala SET ubicacion=?;";
 
             PreparedStatement ps = conex.prepareStatement(sql);
-            ps.setInt(1, sala.getId_sala());
-            ps.setString(2, sala.getUbicacion());
-
+            ps.setNString(1, sala.getUbicacion());
             ps.executeUpdate();
+            
             ps.close();
 
         } catch (SQLException ex) {
@@ -77,12 +72,12 @@ public class Sala_bd {
 
     }
 
-    public void borrarSala(int id_sala) {
-        Cliente cliente = null;
+    public void borrarSala(int id) {
         try {
             String sql = "DELETE FROM sala WHERE id_sala=?;";
-            PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, id_sala);
+            PreparedStatement ps = conex.prepareStatement(sql);
+     
+            ps.setInt(1, id);
             ps.executeUpdate();
 
             ps.close();
@@ -90,10 +85,8 @@ public class Sala_bd {
         } catch (SQLException ex) {
             System.out.println("Error al borrar sala " + ex.getMessage());
         }
-
     }
-
-    public Sala buscarSala(int id) {
+   public Sala buscarSala(int id) {
         Sala sala = null;
         try {
             String sql = "SELECT * FROM sala WHERE id_sala=?;";
@@ -103,7 +96,7 @@ public class Sala_bd {
             while (resultSet.next()) {
                 sala = new Sala();
                 sala.setId_sala(resultSet.getInt("id_sala"));
-                sala.setUbicacion(resultSet.getString("ubicacion"));
+                sala.setUbicacion(resultSet.getNString("cant_butacas"));
             }
             ps.close();
 
@@ -128,7 +121,7 @@ public class Sala_bd {
                 sala = new Sala();
 
                 sala.setId_sala(resultSet.getInt("id_sala"));
-                sala.setUbicacion(resultSet.getString("ubicacion"));
+                sala.setUbicacion(resultSet.getNString("cant_butacas"));
 
                 salas.add(sala);
             }
@@ -140,5 +133,4 @@ public class Sala_bd {
 
         return salas;
     }
-
 }
