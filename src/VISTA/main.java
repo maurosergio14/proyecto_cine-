@@ -40,8 +40,8 @@ public class main {
 
      
       //ACTUALIZAR CLIENTE
-        cliente4.setApellido("apellido");
-        cliente4.setNombre("nombre");
+        cliente4.setApellido("aver");
+        cliente4.setNombre("que pasa");
         cbd.actualizarCliente(cliente4);
 
         //BUSCAR UN CLIENTE

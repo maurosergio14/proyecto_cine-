@@ -11,7 +11,7 @@ public class Sala {
     private int id_sala;
     //private String nombre;
     private String ubicacion;
-    //private List butacas;
+    private List butacas;
 
     public Sala() {
     }

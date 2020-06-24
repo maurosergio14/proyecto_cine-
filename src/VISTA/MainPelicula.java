@@ -36,6 +36,7 @@ public class MainPelicula {
         //BORRAR UNA PELICULA DE BD MEDIANTE UN ID
         //  cbd.borrarCliente(1331);
         
+        
         //ACTUALIZAR PELICULA
         pelicula4.setTitulo("yo");
         pelicula4.setGenero("gene");
