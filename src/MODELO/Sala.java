@@ -9,17 +9,16 @@ import java.util.Map;
 public class Sala {
 
     private int id_sala;
-    //private String nombre;
     private String ubicacion;
-    private List butacas;
+    
 
-    public Sala() {
+     public Sala() {
     }
 
     public Sala(String ubicacion) {
         this.ubicacion = ubicacion;
     }
-    
+
     public int getId_sala() {
         return id_sala;
     }
@@ -35,10 +34,9 @@ public class Sala {
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
-  
+
     @Override
     public String toString() {
-        return "Sala{" + "id=" + id_sala + ", nombre=" + ubicacion  + '}';
+        return "Sala{" + "id_sala=" + id_sala + ", ubicacion=" + ubicacion + '}';
     }
-
 }

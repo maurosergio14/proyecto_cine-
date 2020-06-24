@@ -6,34 +6,29 @@ package MODELO;
 public class Butaca {
 
     private int id_butaca = -1;
-    private Sala sala;
+    private FuncionVerPelicula verPelicula; 
     private int fila;
-    private String columna;
-    private FuncionVerPelicula verPelicula; // funcionVerPelicula
-    
-    
+    private int columna;
+    private boolean estado;
+
     public Butaca() {
     }
 
-    public Butaca(Sala sala, int fila, String columna) {
-        this.sala = sala;
+    
+    
+    public Butaca(FuncionVerPelicula verPelicula, int fila, int columna, boolean estado) {
+        this.verPelicula = verPelicula;
         this.fila = fila;
         this.columna = columna;
+        this.estado = estado;
     }
 
-    public Butaca(int id_butaca, Sala sala, int fila, String columna) {
+    public int getId_butaca() {
+        return id_butaca;
+    }
+
+    public void setId_butaca(int id_butaca) {
         this.id_butaca = id_butaca;
-        this.sala = sala;
-        this.fila = fila;
-        this.columna = columna;
-    }
-
-    public Sala getSala() {
-        return sala;
-    }
-
-    public void setSala(Sala sala) {
-        this.sala = sala;
     }
 
     public FuncionVerPelicula getVerPelicula() {
@@ -42,16 +37,6 @@ public class Butaca {
 
     public void setVerPelicula(FuncionVerPelicula verPelicula) {
         this.verPelicula = verPelicula;
-    }
-  
-    
-    
-    public int getId_butaca() {
-        return id_butaca;
-    }
-
-    public void setId_butaca(int id_butaca) {
-        this.id_butaca = id_butaca;
     }
 
     public int getFila() {
@@ -62,12 +47,26 @@ public class Butaca {
         this.fila = fila;
     }
 
-    public String getColumna() {
+    public int getColumna() {
         return columna;
     }
 
-    public void setColumna(String columna) {
+    public void setColumna(int columna) {
         this.columna = columna;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Butaca{" + "id_butaca=" + id_butaca + ", verPelicula=" + verPelicula + ", fila=" + fila + ", columna=" + columna + ", estado=" + estado + '}';
+    }
+    
+   
 }
