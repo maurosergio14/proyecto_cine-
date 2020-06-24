@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-06-2020 a las 22:54:47
+-- Tiempo de generación: 24-06-2020 a las 01:00:56
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -31,8 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `butaca` (
   `id_butaca` int(10) NOT NULL,
   `id_verPelicula` int(11) NOT NULL,
-  `fila` varchar(50) NOT NULL,
-  `columna` varchar(50) NOT NULL,
+  `fila` int(11) NOT NULL,
+  `columna` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -58,7 +58,8 @@ INSERT INTO `cliente` (`id_cliente`, `nombre`, `apellido`, `dni`) VALUES
 (3, 'Cesar', 'Noso', 222),
 (4, 'Armando', 'Paredes', 223),
 (5, 'Monica', 'Galindo', 224),
-(6, 'nombre', 'apellido', 227);
+(6, 'nombre', 'apellido', 227),
+(7, 'lucas', 'perez', 5555);
 
 -- --------------------------------------------------------
 
@@ -70,8 +71,8 @@ CREATE TABLE `funcionverpelicula` (
   `id_verPelicula` int(11) NOT NULL,
   `id_pelicula` int(11) NOT NULL,
   `id_sala` int(11) NOT NULL,
-  `horario_desde` varchar(50) NOT NULL,
-  `hora_hasta` varchar(50) NOT NULL
+  `horario_desde` datetime NOT NULL DEFAULT current_timestamp(),
+  `horario_hasta` time NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -89,6 +90,15 @@ CREATE TABLE `pelicula` (
   `idioma` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `pelicula`
+--
+
+INSERT INTO `pelicula` (`id_pelicula`, `titulo`, `genero`, `duracion`, `autor`, `idioma`) VALUES
+(1, 'rambo', 'accion', '2horas', 'pepe', 'español'),
+(2, 'vengadores', 'accion', '3horas', 'juancito', 'ingles'),
+(3, 'rambo 2', 'accion', '2horas', 'pepe', 'español');
+
 -- --------------------------------------------------------
 
 --
@@ -99,6 +109,14 @@ CREATE TABLE `sala` (
   `id_sala` int(8) NOT NULL,
   `ubucacion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `sala`
+--
+
+INSERT INTO `sala` (`id_sala`, `ubucacion`) VALUES
+(1, 'sur'),
+(2, 'norte');
 
 -- --------------------------------------------------------
 
@@ -171,13 +189,13 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT de la tabla `butaca`
 --
 ALTER TABLE `butaca`
-  MODIFY `id_butaca` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_butaca` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_cliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `funcionverpelicula`
@@ -189,13 +207,13 @@ ALTER TABLE `funcionverpelicula`
 -- AUTO_INCREMENT de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
-  MODIFY `id_pelicula` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pelicula` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `sala`
 --
 ALTER TABLE `sala`
-  MODIFY `id_sala` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sala` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `ticket`

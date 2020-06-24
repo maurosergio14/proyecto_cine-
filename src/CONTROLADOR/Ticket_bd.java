@@ -4,6 +4,7 @@ package CONTROLADOR;
 import MODELO.Butaca;
 import MODELO.Cliente;
 import MODELO.Conexion;
+import MODELO.FuncionVerPelicula;
 import MODELO.Ticket;
 import MODELO.Pelicula;
 import MODELO.Sala;
@@ -12,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -77,7 +80,7 @@ import java.util.List;
     }
     
     void modificaTiket(int ticket){
-        
+     
     }
     
     void liberarButaca(Sala sala){
@@ -91,15 +94,77 @@ import java.util.List;
         return null;  
     }
     
-    List <Cliente> ObtenerClienteFecha(int dni,String fecha){
+    List <Ticket> ObtenerClienteFecha(int id_cliente,String fecha){
+      List<Ticket> listadeclinetes = new ArrayList<Ticket>();
+
+        try {
+            String sql = "SELECT * FROM ticket, WHERE id_cliente="+id_cliente+",fecha_ticket="+fecha+";";
+
+            PreparedStatement ps = conexion.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+           
+            Ticket ticket;
+
+            while (rs.next()) {
+               
+                ticket=new Ticket();
+                ticket.setCliente(rs.getInt(id_cliente));//no encuentro el error
+                ticket.setFecha(rs.getDate(fecha));
+
+                listadeclinetes.add(ticket);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener la lista de clientes");
+        }
+        
+        
         return null;  
     }
                                 
-    void cantidadTicketPorFecha(int ticket,String fecha){
-      
+    void cantidadTicketPorFecha(String fecha){
+       Ticket ticketporfechas = null;
+        try {
+            String sql = "SELECT * FROM ticket WHERE fecha_ticket=?;";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setString(1,fecha);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ticketporfechas = new Ticket();
+                ticketporfechas.setId_ticket(rs.getInt("id_verPelicula"));
+                
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar funcion ver Pelicula" + ex.getMessage());
+        }
+
     }
     
-    void cantidadTicketPorPelicula(int ticket,int id_pelicula){
-        
+    void cantidadTicketPorPelicula(int id_pelicula){
+        Ticket ticketporpelicula = null;
+        try {
+            String sql = "SELECT * FROM ticket WHERE id_pelicula=?;";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1,id_pelicula);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ticketporpelicula = new Ticket();
+                ticketporpelicula.setId_ticket(rs.getInt("id_verPelicula"));
+                
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar funcion ver Pelicula" + ex.getMessage());
+        }
     }
 }
