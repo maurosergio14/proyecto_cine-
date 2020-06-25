@@ -31,15 +31,21 @@ public class Pelicula_bd {
 
     public void guardarPelicula(Pelicula pelicula) {
               try {
-            String sql = "INSERT INTO pelicula  (titulo ,genero ,duracion ,autor , idioma) VALUES (?,?,?,?,?);";
+            String sql = "INSERT INTO pelicula  (titulo ,genero , idioma) VALUES (?,?,?);";
             PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, pelicula.getTitulo());
             ps.setString(2, pelicula.getGenero());
-            ps.setString(3, pelicula.getDuracion());
-            ps.setString(4, pelicula.getAutor());
-            ps.setString(5, pelicula.getIdioma());
+            ps.setString(3, pelicula.getIdioma());
             System.out.println("subio");
             ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+               
+             if (rs.next()) {
+                pelicula.setId(rs.getInt(1));
+
+            } else {
+                System.out.println("No se pudo obtener el id luego de insertar un cliente");
+            }
 
             ps.close();
 

@@ -50,7 +50,8 @@ public class Butaca_bd {
             ps.setInt(3, butaca.getColumna());
             ps.setBoolean(4, butaca.isEstado() );
             
-            ResultSet rs = ps.executeQuery();
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
 
             if (rs.next()) {
                 butaca.setId_butaca(rs.getInt(1));

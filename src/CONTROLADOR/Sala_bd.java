@@ -33,7 +33,7 @@ public class Sala_bd {
    public void guardarSala(Sala sala) {
 
         try {
-            String sql = "INSERT INTO sala (ubicacion)VALUE(?);";
+            String sql = "INSERT INTO sala (ubucacion)VALUE(?);";
             PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setNString(1, sala.getUbicacion());

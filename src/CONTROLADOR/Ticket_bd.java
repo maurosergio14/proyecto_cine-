@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.Time;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,37 +38,32 @@ import java.util.List;
         }
     }
     
-    void generarTicket(Ticket ticket){
+   public void generarTicket(Ticket ticket){
         
         try {
+            String sql = "INSERT INTO ticket (id_cliente, id_sala, id_butaca, id_pelicula, fecha_ticket, hora_ticket, monto, estado, metodo_de_pago)VALUES(?,?,?,?,?,?,?,?,?);";
+            PreparedStatement pst = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                       
             
-            PreparedStatement pst = conexion.prepareStatement("insert into ticket values(?,?,?,?,?,?,?,?,?)");
-            
-            pst.setString(1, "0");
-            
-            Cliente idCliente = ticket.getCliente();
-            pst.setInt(2, idCliente.getId_cliente());
-            
-            Pelicula idPelicula = ticket.getPelicula();
-            pst.setInt(3, idPelicula.getId());
-            
-            Butaca idButaca = ticket.getButaca();
-            pst.setInt(4, idButaca.getId_butaca());
-            
-            //pst.setString(5, ticket.getFecha());
-            //pst.setString(6, ticket.getHora());
+            pst.setInt(1,ticket.getCliente().getId_cliente());
+            pst.setInt(2,ticket.getSala().getId_sala());
+            pst.setInt(3,ticket.getButaca().getId_butaca());
+            pst.setInt(4,ticket.getPelicula().getId());
+            pst.setDate(5,java.sql.Date.valueOf(ticket.getFecha()));
+            pst.setTime(6,Time.valueOf(ticket.getHora()));
             pst.setDouble(7, ticket.getMonto());
             pst.setInt(8, 21);
             pst.setString(9, ticket.getMetodoDePago());
-            pst.executeUpdate();
+                       
+            ResultSet rs = pst.executeQuery();
             
             
-        } catch (Exception e) {
-            System.out.println("ERROR"+e);
+        } catch (Exception rs) {
+            System.out.println("ERROR al guardar ticket : " + rs);
         }
         
     }
-    void borrarTicket(int ticket){
+   public void borrarTicket(int ticket){
         try {
             
             int ID = ticket;
@@ -80,7 +77,7 @@ import java.util.List;
         }
     }
     
-    void modificaTiket(int ticket){
+   public void modificaTiket(int ticket){
         
         try {
             
@@ -105,7 +102,7 @@ import java.util.List;
         }
     }
     
-    void liberarButaca(Sala sala){
+   public void liberarButaca(Sala sala){
         try {
             
         } catch (Exception e) {
@@ -117,8 +114,7 @@ import java.util.List;
         List<FuncionVerPelicula> horarios = new ArrayList<FuncionVerPelicula>();
         
         try {
-            PreparedStatement pst = conexion.prepareStatement("select funcionverpelicula from ticket "
-                    + "where id_pelicula='"+idPelicula+"' and"
+            PreparedStatement pst = conexion.prepareStatement("select funcionverpelicula from ticket where id_pelicula='"+idPelicula+"' and"
                     + " id_sala='"+idSala+"'");
             
             ResultSet rs = pst.executeQuery();
@@ -141,15 +137,15 @@ import java.util.List;
         return horarios;
     }
     
-    List<Sala> obtenerSalaPelicula(int idSala,int Pelicula){
+   public List<Sala> obtenerSalaPelicula(int idSala,int Pelicula){
         return null;  
     }
     
-    List <Ticket> ObtenerClienteFecha(int id_cliente,String fecha){
+   public List <Ticket> ObtenerClienteFecha(int id_cliente,String fecha){
       List<Ticket> listadeclinetes = new ArrayList<Ticket>();
 
         try {
-            String sql = "SELECT * FROM ticket, WHERE id_cliente="+id_cliente+",fecha_ticket="+fecha+";";
+            String sql = "SELECT * FROM ticket, WHERE id_cliente='"+id_cliente+"',fecha_ticket='"+fecha+"';";
 
             PreparedStatement pst = conexion.prepareStatement(sql);
 
@@ -161,8 +157,8 @@ import java.util.List;
             while (rs.next()) {
                
                 ticket=new Ticket();
-                ticket.getCliente().setId_cliente(rs.getInt(id_cliente));//ya lo encontramos
-                ticket.setFecha(rs.getDate(fecha));
+                ticket.getCliente().setId_cliente(rs.getInt("id_cliente"));//ya lo encontramos
+                ticket.setFecha(rs.getString("fecha"));
 
                 listadeclinetes.add(ticket);
             }
@@ -173,10 +169,10 @@ import java.util.List;
         }
         
         
-        return null;  
+        return listadeclinetes;  
     }
                                 
-    void cantidadTicketPorFecha(String fecha){
+   public void cantidadTicketPorFecha(String fecha){
        Ticket ticketporfechas = null;
         try {
             String sql = "SELECT * FROM ticket WHERE fecha_ticket=?;";
@@ -198,7 +194,7 @@ import java.util.List;
 
     }
     
-    void cantidadTicketPorPelicula(int id_pelicula){
+   public void cantidadTicketPorPelicula(int id_pelicula){
         Ticket ticketporpelicula = null;
         try {
             String sql = "SELECT * FROM ticket WHERE id_pelicula=?;";
@@ -217,5 +213,24 @@ import java.util.List;
         } catch (SQLException ex) {
             System.out.println("Error al buscar funcion ver Pelicula" + ex.getMessage());
         }
+    }
+   List<Sala> obtenerSalaPelicula(Pelicula obPelicula){
+        List<Sala> listaSalas = new ArrayList<Sala>();
+        
+        try {
+            PreparedStatement pst = conexion.prepareStatement("select distinctrow id_sala from funcionverpelicula where"
+                    + "id_pelicula='"+obPelicula.getId()+"'");
+            ResultSet rs = pst.executeQuery();
+            Sala salas;
+            
+            while(rs.next()){
+                salas = new Sala();
+                salas.setId_sala(rs.getInt("id_sala"));
+                listaSalas.add(salas);
+            }
+            
+        } catch (Exception e) {
+        }
+        return listaSalas;  
     }
 }
