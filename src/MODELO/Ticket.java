@@ -1,66 +1,35 @@
 package MODELO;
+import java.text.ParseException;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 /**
  * @author grupo 4
  */
 public class Ticket {
-    Date Fecha = new Date();
     private int id_ticket;
     private Cliente cliente;
     private Sala sala;
-    private Pelicula pelicula;
-    private Date fecha;
-    private Date hora;
-    private int fecha1;
-    private int hora1;
     private Butaca butaca;
+    private Pelicula pelicula;
+    private String fecha;
+    private String hora;
     private double monto;
+    private boolean estado;
     private String metodoDePago;
 
-    public Ticket() {
-    }
-
-    public Ticket(Cliente cliente, Sala sala, Pelicula pelicula, int fecha1, int hora1, Butaca butaca, double monto, String metodoDePago) {
+    public Ticket(Cliente cliente, Sala sala, Butaca butaca, Pelicula pelicula, String fecha, String hora, double monto, boolean estado, String metodoDePago) {
         this.cliente = cliente;
         this.sala = sala;
-        this.pelicula = pelicula;
-        this.fecha1 = fecha1;
-        this.hora1 = hora1;
         this.butaca = butaca;
+        this.pelicula = pelicula;
+        this.fecha = fecha;
+        this.hora = hora;
         this.monto = monto;
+        this.estado = estado;
         this.metodoDePago = metodoDePago;
     }
 
-    public int getFecha1() {
-        return fecha1;
-    }
-
-    public void setFecha1(int fecha1) {
-        this.fecha1 = fecha1;
-    }
-
-    public int getHora1() {
-        return hora1;
-    }
-
-    public void setHora1(int hora1) {
-        this.hora1 = hora1;
-    }
-    
-    
-    
-    
-    
-    public Ticket(int id_ticket, Cliente cliente, Sala sala, Pelicula pelicula, Butaca butaca,double monto,String metodoDePago) {
-        this.id_ticket = id_ticket;
-        this.cliente = cliente;
-        this.sala = sala;
-        this.pelicula = pelicula;
-        this.fecha = fecha;
-        this.hora=hora;
-        this.butaca = butaca;
-        this.monto=monto;
-        this.metodoDePago=metodoDePago;
+    public Ticket() {
     }
 
     public int getId_ticket() {
@@ -87,22 +56,6 @@ public class Ticket {
         this.sala = sala;
     }
 
-    public Pelicula getPelicula() {
-        return pelicula;
-    }
-
-    public void setPelicula(Pelicula pelicula) {
-        this.pelicula = pelicula;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
     public Butaca getButaca() {
         return butaca;
     }
@@ -111,11 +64,27 @@ public class Ticket {
         this.butaca = butaca;
     }
 
-    public Date getHora() {
+    public Pelicula getPelicula() {
+        return pelicula;
+    }
+
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
+    }
+
+    public String getFecha(){
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getHora(){
         return hora;
     }
 
-    public void setHora(Date hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
@@ -127,6 +96,14 @@ public class Ticket {
         this.monto = monto;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     public String getMetodoDePago() {
         return metodoDePago;
     }
@@ -134,13 +111,13 @@ public class Ticket {
     public void setMetodoDePago(String metodoDePago) {
         this.metodoDePago = metodoDePago;
     }
-    
-    
-   
 
     @Override
     public String toString() {
-        return "Negocio{" + "cliente=" + cliente + ", sala=" + sala + ", pelicula=" + pelicula + ", ticket=" + id_ticket + ", fecha=" + fecha + '}';
+        return "Ticket{" + "id_ticket=" + id_ticket + ", cliente=" + cliente + ", sala=" + sala + ", butaca=" + butaca + ", pelicula=" + pelicula + ", fecha=" + fecha + ", hora=" + hora + ", monto=" + monto + ", estado=" + estado + ", metodoDePago=" + metodoDePago + '}';
     }
+    
+
+   
 
 }

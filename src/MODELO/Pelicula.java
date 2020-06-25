@@ -5,7 +5,7 @@ package MODELO;
  * @author grupo 4
  */
 public class Pelicula {
-   private int id_pelicula;
+   private int id_pelicula = -1;
    private String titulo;
    private String genero;
    private String duracion;
