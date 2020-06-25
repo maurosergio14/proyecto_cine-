@@ -27,6 +27,7 @@ public class FuncionVerPelicula_bd {
 
     private Connection conex;
     List butacas;
+
     public FuncionVerPelicula_bd() {
 
     }
@@ -61,8 +62,8 @@ public class FuncionVerPelicula_bd {
                 butaca = new Butaca();
                 butaca.setId_butaca(rs.getInt("id_butaca"));
                 butaca.setFila(rs.getInt("fila"));
-                butaca.setColumna(rs.getString("columnas"));//butaca.setColumna(rs.getInt("columnas"))
-                //butaca.setEstado(rs.getBoolean("true"));
+                butaca.setColumna(rs.getInt("columnas"));//butaca.setColumna(rs.getInt("columnas"))
+                butaca.setEstado(rs.getBoolean("estado"));
                 butacas.add(butaca);
             }
 
@@ -96,8 +97,8 @@ public class FuncionVerPelicula_bd {
                 butaca = new Butaca();
                 butaca.setId_butaca(rs.getInt("id_butaca"));
                 butaca.setFila(rs.getInt("fila"));
-                butaca.setColumna(rs.getString("columnas"));//butaca.setColumna(rs.getInt("columnas"))
-                //butaca.setEstado(rs.getBoolean("true"));
+                butaca.setColumna(rs.getInt("columnas"));//butaca.setColumna(rs.getInt("columnas"))
+                butaca.setEstado(rs.getBoolean("true"));
                 butacas.add(butaca);
             }
 
@@ -186,7 +187,7 @@ public class FuncionVerPelicula_bd {
     }
 //------------------------------------------------------------------------------
 
-   public List<FuncionVerPelicula> obtenerSalasProyectadas(int id_pelicula /*, String horario_desde*/) {
+    public List<FuncionVerPelicula> obtenerSalasProyectadas(int id_pelicula /*, String horario_desde*/) {
         List<FuncionVerPelicula> verPelicula = new ArrayList<FuncionVerPelicula>();
         try {
             String sql = "SELECT * FROM funcionVerPelicula WHERE id_pelicula =? , hora_desde =? ;";
@@ -207,7 +208,6 @@ public class FuncionVerPelicula_bd {
                 Pelicula pelicula = buscarPeliculav2(rs.getInt("id_pelicula"));
                 funcionVerPelicula.setPelicula(pelicula);
 
-               
                 funcionVerPelicula.setHorario_desde(rs.getTime("hora_desde"));
                 funcionVerPelicula.setHorario_hasta(rs.getTime("hora_hasta"));
 
@@ -287,13 +287,13 @@ public class FuncionVerPelicula_bd {
             while (rs.next()) {
                 verPelicula = new FuncionVerPelicula();
                 verPelicula.setId_verPelicula(rs.getInt("id_verPelicula"));
-                          
+
                 verPelicula.setHorario_desde(rs.getTime("hora_desde"));
                 verPelicula.setHorario_hasta(rs.getTime("hora_hasta"));
 
                 Sala_bd salaData = new Sala_bd((Conexion) conex);
                 Sala sala = salaData.buscarSala(rs.getInt("id_sala"));
-                
+
             }
             ps.close();
 
@@ -308,19 +308,22 @@ public class FuncionVerPelicula_bd {
     public void guardarFuncion(FuncionVerPelicula verPelicula) { //guardarProyeccion
 
         try {
-            String sql = "INSERT INTO funcionverpelicula(id_pelicula,id_sala,hora_desde,hora_hasta)VALUES(?,?,?,?);";
+            String sql = "INSERT INTO funcionverpelicula(id_pelicula,id_sala,horario_desde,horario_hasta)VALUES(?,?,?,?);";
 
             PreparedStatement ps = conex.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, verPelicula.getPelicula().getId());
+
             ps.setInt(2, verPelicula.getSala().getId_sala());
-            ps.setTime(3, verPelicula.getHorario_desde());
-            ps.setTime(4, verPelicula.getHorario_hasta());
+            java.sql.Timestamp horaDesde = new java.sql.Timestamp(verPelicula.getHorario_desde().getTime());
+            ps.setTimestamp(3, horaDesde);
+
+            java.sql.Timestamp horaHasta = new java.sql.Timestamp(verPelicula.getHorario_hasta().getTime());
+            ps.setTimestamp(4, horaHasta);
 
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
-            ps.executeQuery();
 
             if (rs.next()) {
                 verPelicula.setId_verPelicula(rs.getInt(1));
@@ -328,7 +331,7 @@ public class FuncionVerPelicula_bd {
                 System.out.println("No se pueo obtener el id");
             }
 
-            Butaca butaca;
+            /*Butaca butaca;
 
             for (int i = 1; i < 10; i++) {
 
@@ -342,69 +345,58 @@ public class FuncionVerPelicula_bd {
                     ps.setInt(i, verPelicula.getId_verPelicula());
                 }
 
-            }
-            
-          butacas = new ArrayList();
+            }*/
+ /* butacas = new ArrayList();
             
           Butaca_bd  butacaData = new Butaca_bd();
           
           butacas = obtenerButacas(verPelicula.getId_verPelicula());
-          verPelicula.setButacas((ArrayList<Butaca>) butacas);
-          
+          verPelicula.setButacas((ArrayList<Butaca>) butacas);*/
             ps.close();
 
         } catch (SQLException ex) {
-            System.out.print("Error al guardar Funncion Ver Pelicula" + ex.getMessage());
+            System.out.print("Error al guardar Funncion VerPelicula" + ex.getMessage());
         }
 
     }
-    
-    
-   public List<Butaca> obtenerButacas(int id) throws SQLException{
-       
-     List<Butaca> butacas = new ArrayList<>();
-     
-     FuncionVerPelicula verPelicula = new FuncionVerPelicula();
-     Butaca butaca;
-     
-     try{
-         String sql = "SELECT * FROM sala,butaca WHERE id_verPelicula = "+id+" ;";
-          PreparedStatement ps = conex.prepareStatement(sql);
-         
-         ResultSet rs = ps.executeQuery();
-         while(rs.next()){
-             butaca = new Butaca();
-             butaca.setFila(rs.getInt("fila"));
-             //butaca.setColumna(rs.getInt("columna"))//Int porque columnas seria int;
-            // butaca.setEstado(rs.getInt("estado"));//Estado debe tener butaca
-             
-            FuncionVerPelicula_bd pd = new FuncionVerPelicula_bd((Conexion) conex);
-             
-             verPelicula = pd.buscarVerPelicula(id);
-             
-             butaca.setVerPelicula(verPelicula);
-             butacas.add(butaca);
-             
-         }
-         ps.close();
-         
-         
-     }catch(SQLException ex){
-         System.out.println("Error al buscar " + ex.getMessage());
-     }
-     
-     return butacas;
-       
-   }
-    
-    
-    
 
-}
+    public List<Butaca> obtenerButacas(int id) throws SQLException {
 
+        List<Butaca> butacas = new ArrayList<>();
 
+        FuncionVerPelicula verPelicula = new FuncionVerPelicula();
+        Butaca butaca;
 
-    /*public Pelicula buscarPelicula(int id_Pelicula) {
+        try {
+            String sql = "SELECT * FROM sala,butaca WHERE id_verPelicula = " + id + " ;";
+            PreparedStatement ps = conex.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                butaca = new Butaca();
+                butaca.setFila(rs.getInt("fila"));
+                butaca.setColumna(rs.getInt("columna"));//Int porque columnas seria int;
+                butaca.setEstado(rs.getBoolean("estado"));//Estado debe tener butaca
+
+                FuncionVerPelicula_bd pd = new FuncionVerPelicula_bd((Conexion) conex);
+
+                verPelicula = pd.buscarVerPelicula(id);
+
+                butaca.setVerPelicula(verPelicula);
+                butacas.add(butaca);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar " + ex.getMessage());
+        }
+
+        return butacas;
+
+    }
+
+    public Pelicula buscarPelicula(int id_Pelicula) {
         Pelicula pelicula = null;
 
         try {
@@ -430,9 +422,9 @@ public class FuncionVerPelicula_bd {
             System.out.print("Error al Buscar Pelicula" + ex.getMessage());
         }
         return pelicula;
-    }*/
+    }
 
-   /* public Sala buscarSala(int id_Sala) {
+    public Sala buscarSala(int id_Sala) {
         Sala sala = null;
 
         try {
@@ -455,4 +447,5 @@ public class FuncionVerPelicula_bd {
             System.out.print("Error al Buscar Sala" + ex.getMessage());
         }
         return sala;
-    }*/
+    }
+}
