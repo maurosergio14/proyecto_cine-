@@ -23,7 +23,7 @@ public class mainSala {
 
         //CONTROLADOR Sala_bd PARA GUARDAR LOS CLIENTES CREADOS EN LA BASE DE DATOS
         Sala_bd sala_bd = new Sala_bd(cargar);
-        // sala_bd.guardarSala(sala1);
+         sala_bd.guardarSala(sala1);
         
         
         //BORRAR UNA SALA DE BD MEDIANTE UN ID_DNI
