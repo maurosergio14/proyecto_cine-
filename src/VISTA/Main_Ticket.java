@@ -56,7 +56,7 @@ public class Main_Ticket {
           Bbd.guardarButaca(butaca1);
         //CREAR TICKET
         
-        Ticket ticket = new Ticket(cliente1, sala1, butaca1, pelicula1, "2021-12-23" ,"10:10:10" , 200.23 ,true, "metodoDePago");
+        Ticket ticket = new Ticket(cliente1, sala1, butaca1, fp1, "2021-12-23" ,"10:10:10" , 200.23 ,true, "metodoDePago");
         
         //CONTROLADOR TICKET PARA GUARDAR LOS CLIENTES CREADOS EN LA BASE DE DATOS
         Ticket_bd ticket1 = new Ticket_bd(cargar);

@@ -17,7 +17,7 @@ public class SALAS_ADMIN extends javax.swing.JFrame {
         initComponents();
         
         conexion = new Conexion("jdbc:mysql://localhost/proyecto-cine", "root", "");
-        sala_bd=new Sala_bd((Connection) conexion); 
+        sala_bd=new Sala_bd((Conexion) (Connection) conexion); 
     }
 
    

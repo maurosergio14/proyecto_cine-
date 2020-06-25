@@ -2,7 +2,11 @@
 package VISTA_PELICULA;
 
 import CONTROLADOR.Ticket_bd;
+import MODELO.Butaca;
+import MODELO.Cliente;
 import MODELO.Conexion;
+import MODELO.FuncionVerPelicula;
+import MODELO.Sala;
 import VISTA_SALA.*;
 
 /**
@@ -77,6 +81,11 @@ public class PELICULAS_GENERAR_TICKET extends javax.swing.JFrame {
         bGenerarT.setFont(new java.awt.Font("Tahoma", 1, 32)); // NOI18N
         bGenerarT.setForeground(new java.awt.Color(243, 113, 33));
         bGenerarT.setText("GENERAR TICKET");
+        bGenerarT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGenerarTActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -284,6 +293,18 @@ public class PELICULAS_GENERAR_TICKET extends javax.swing.JFrame {
         });
         this.setVisible(false);
     }//GEN-LAST:event_irInicioPeliculasActionPerformed
+
+    private void bGenerarTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenerarTActionPerformed
+      Cliente cliente;
+     Sala sala;
+     Butaca butaca;
+     FuncionVerPelicula verPelicula;
+     String fecha;
+    String hora;
+     double monto;
+     boolean estado;
+    String metodoDePago;
+    }//GEN-LAST:event_bGenerarTActionPerformed
 
     /**
      * @param args the command line arguments

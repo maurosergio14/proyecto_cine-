@@ -10,18 +10,18 @@ public class Ticket {
     private Cliente cliente;
     private Sala sala;
     private Butaca butaca;
-    private Pelicula pelicula;
+    private FuncionVerPelicula verPelicula;
     private String fecha;
     private String hora;
     private double monto;
     private boolean estado;
     private String metodoDePago;
 
-    public Ticket(Cliente cliente, Sala sala, Butaca butaca, Pelicula pelicula, String fecha, String hora, double monto, boolean estado, String metodoDePago) {
+    public Ticket(Cliente cliente, Sala sala, Butaca butaca, FuncionVerPelicula verPelicula, String fecha, String hora, double monto, boolean estado, String metodoDePago) {
         this.cliente = cliente;
         this.sala = sala;
         this.butaca = butaca;
-        this.pelicula = pelicula;
+        this.verPelicula = verPelicula;
         this.fecha = fecha;
         this.hora = hora;
         this.monto = monto;
@@ -64,13 +64,14 @@ public class Ticket {
         this.butaca = butaca;
     }
 
-    public Pelicula getPelicula() {
-        return pelicula;
+    public FuncionVerPelicula getVerPelicula() {
+        return verPelicula;
     }
 
-    public void setPelicula(Pelicula pelicula) {
-        this.pelicula = pelicula;
+    public void setVerPelicula(FuncionVerPelicula verPelicula) {
+        this.verPelicula = verPelicula;
     }
+
 
     public String getFecha(){
         return fecha;
@@ -114,7 +115,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" + "id_ticket=" + id_ticket + ", cliente=" + cliente + ", sala=" + sala + ", butaca=" + butaca + ", pelicula=" + pelicula + ", fecha=" + fecha + ", hora=" + hora + ", monto=" + monto + ", estado=" + estado + ", metodoDePago=" + metodoDePago + '}';
+        return "Ticket{" + "id_ticket=" + id_ticket + ", cliente=" + cliente + ", sala=" + sala + ", butaca=" + butaca + ", verPelicula=" + verPelicula + ", fecha=" + fecha + ", hora=" + hora + ", monto=" + monto + ", estado=" + estado + ", metodoDePago=" + metodoDePago + '}';
     }
     
 

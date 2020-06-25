@@ -61,16 +61,16 @@ public class MainTicket {
         //proyeccionData.guardarFuncion(proyeccion1);*/
 
         //CREAR BUTACA
-        Butaca butaca1 = new Butaca(proyeccion1, 1, 1,"false");
+       // Butaca butaca1 = new Butaca(proyeccion1, 1, 1,"false");
         //Butaca_bd butacaData = new Butaca_bd(cargar);
         //butacaData.guardarButaca(butaca1);
         //CREAR TICKET
-        Ticket ticket = new Ticket(cliente1,  proyeccion1 ,butaca1,LocalDate.of(2020,6,24) ,Time.valueOf(LocalTime.MIN), 2000.0,"False", "MercadoDePago");
+        //Ticket ticket = new Ticket(cliente1,  proyeccion1 ,butaca1,LocalDate.of(2020,6,24) ,Time.valueOf(LocalTime.MIN), 2000.0,"False", "MercadoDePago");
 
         //CONTROLADOR TICKET PARA GUARDAR LOS CLIENTES CREADOS EN LA BASE DE DATOS
-        Ticket_bd ticket_bd = new Ticket_bd(cargar);
+        //Ticket_bd ticket_bd = new Ticket_bd(cargar);
 
-        ticket_bd.generarTicket(ticket);
+       // ticket_bd.generarTicket(ticket);
     }
 
 }
