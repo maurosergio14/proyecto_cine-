@@ -33,7 +33,7 @@ public class MODIFICAR_TICKET extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        irInicioTicket = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -65,10 +65,15 @@ public class MODIFICAR_TICKET extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MODIFICAR TICKET:");
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(243, 113, 33));
-        jButton2.setText("Volver");
+        irInicioTicket.setBackground(new java.awt.Color(255, 255, 255));
+        irInicioTicket.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        irInicioTicket.setForeground(new java.awt.Color(243, 113, 33));
+        irInicioTicket.setText("Volver");
+        irInicioTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                irInicioTicketActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 32)); // NOI18N
@@ -198,7 +203,7 @@ public class MODIFICAR_TICKET extends javax.swing.JFrame {
                 .addGap(137, 137, 137))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(333, 333, 333)
-                .addComponent(jButton2)
+                .addComponent(irInicioTicket)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -243,7 +248,7 @@ public class MODIFICAR_TICKET extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(irInicioTicket)
                 .addGap(56, 56, 56))
         );
 
@@ -260,6 +265,39 @@ public class MODIFICAR_TICKET extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void irInicioTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irInicioTicketActionPerformed
+        // TODO add your handling code here:
+        TICKET_INICIO irTicketInicio = new TICKET_INICIO();
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(TICKET_INICIO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TICKET_INICIO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TICKET_INICIO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TICKET_INICIO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TICKET_INICIO().setVisible(true);
+            }
+        });
+        this.setVisible(false);
+    }//GEN-LAST:event_irInicioTicketActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,37 +324,8 @@ public class MODIFICAR_TICKET extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MODIFICAR_TICKET.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+        
+      
         //</editor-fold>
 
         /* Create and display the form */
@@ -328,7 +337,7 @@ public class MODIFICAR_TICKET extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton irInicioTicket;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;

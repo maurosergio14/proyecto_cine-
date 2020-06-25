@@ -31,9 +31,9 @@ public class PELICULAS_ADMIN extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        irAdminPeliculas = new javax.swing.JButton();
+        irCargarPeliculas = new javax.swing.JButton();
+        irModificar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -50,20 +50,35 @@ public class PELICULAS_ADMIN extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("PELICULAS:");
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(243, 113, 33));
-        jButton2.setText("Volver");
+        irAdminPeliculas.setBackground(new java.awt.Color(255, 255, 255));
+        irAdminPeliculas.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        irAdminPeliculas.setForeground(new java.awt.Color(243, 113, 33));
+        irAdminPeliculas.setText("Volver");
+        irAdminPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                irAdminPeliculasActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(243, 113, 33));
-        jButton3.setText("CARGAR");
+        irCargarPeliculas.setBackground(new java.awt.Color(255, 255, 255));
+        irCargarPeliculas.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        irCargarPeliculas.setForeground(new java.awt.Color(243, 113, 33));
+        irCargarPeliculas.setText("CARGAR");
+        irCargarPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                irCargarPeliculasActionPerformed(evt);
+            }
+        });
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 32)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(243, 113, 33));
-        jButton4.setText("MODIFICAR");
+        irModificar.setBackground(new java.awt.Color(255, 255, 255));
+        irModificar.setFont(new java.awt.Font("Tahoma", 1, 32)); // NOI18N
+        irModificar.setForeground(new java.awt.Color(243, 113, 33));
+        irModificar.setText("MODIFICAR");
+        irModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                irModificarActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 137, 137));
 
@@ -143,18 +158,18 @@ public class PELICULAS_ADMIN extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3)
+                                .addComponent(irCargarPeliculas)
                                 .addGap(77, 77, 77))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(63, 63, 63)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(irModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 40, Short.MAX_VALUE))))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(340, 340, 340)
-                    .addComponent(jButton2)
+                    .addComponent(irAdminPeliculas)
                     .addContainerGap(340, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
@@ -163,9 +178,9 @@ public class PELICULAS_ADMIN extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(irCargarPeliculas)
                         .addGap(79, 79, 79)
-                        .addComponent(jButton4)
+                        .addComponent(irModificar)
                         .addGap(145, 145, 145)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -176,7 +191,7 @@ public class PELICULAS_ADMIN extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(778, Short.MAX_VALUE)
-                    .addComponent(jButton2)
+                    .addComponent(irAdminPeliculas)
                     .addContainerGap()))
         );
 
@@ -193,6 +208,99 @@ public class PELICULAS_ADMIN extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void irAdminPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irAdminPeliculasActionPerformed
+        // TODO add your handling code here:
+        PELICULAS_INICIO irPeliculasInicio = new PELICULAS_INICIO();
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_INICIO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_INICIO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_INICIO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_INICIO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PELICULAS_INICIO().setVisible(true);
+            }
+        });
+        this.setVisible(false);
+    }//GEN-LAST:event_irAdminPeliculasActionPerformed
+
+    private void irModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irModificarActionPerformed
+        // TODO add your handling code here:
+        PELICULAS_ADMIN_MODIFICAR irAdminModificar = new PELICULAS_ADMIN_MODIFICAR();
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_ADMIN_MODIFICAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_ADMIN_MODIFICAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_ADMIN_MODIFICAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_ADMIN_MODIFICAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PELICULAS_ADMIN_MODIFICAR().setVisible(true);
+            }
+        });
+        this.setVisible(false);
+    }//GEN-LAST:event_irModificarActionPerformed
+
+    private void irCargarPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irCargarPeliculasActionPerformed
+        // TODO add your handling code here:
+        PELICULAS_ADMIN_CARGAR irCargarPeli = new PELICULAS_ADMIN_CARGAR();
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_ADMIN_CARGAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_ADMIN_CARGAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_ADMIN_CARGAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_ADMIN_CARGAR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PELICULAS_ADMIN_CARGAR().setVisible(true);
+            }
+        });
+        this.setVisible(false);
+    }//GEN-LAST:event_irCargarPeliculasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,10 +341,10 @@ public class PELICULAS_ADMIN extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton irAdminPeliculas;
+    private javax.swing.JButton irCargarPeliculas;
+    private javax.swing.JButton irModificar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

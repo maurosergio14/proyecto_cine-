@@ -37,7 +37,7 @@ public class SALAS_BUTACAS extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        irSalasInicio = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,10 +77,15 @@ public class SALAS_BUTACAS extends javax.swing.JFrame {
         jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(243, 113, 33));
-        jButton1.setText("VOLVER");
+        irSalasInicio.setBackground(new java.awt.Color(255, 255, 255));
+        irSalasInicio.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        irSalasInicio.setForeground(new java.awt.Color(243, 113, 33));
+        irSalasInicio.setText("VOLVER");
+        irSalasInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                irSalasInicioActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -119,7 +124,7 @@ public class SALAS_BUTACAS extends javax.swing.JFrame {
                                 .addGap(79, 79, 79)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)))))
+                                .addComponent(irSalasInicio)))))
                 .addGap(31, 31, 31))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(291, 291, 291)
@@ -132,7 +137,7 @@ public class SALAS_BUTACAS extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jButton1))
+                    .addComponent(irSalasInicio))
                 .addGap(96, 96, 96)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -167,6 +172,36 @@ public class SALAS_BUTACAS extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void irSalasInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irSalasInicioActionPerformed
+        // TODO add your handling code here:
+        SALAS irInicioSalas = new SALAS();
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SALAS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SALAS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SALAS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SALAS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SALAS().setVisible(true);
+            }
+        });
+        this.setVisible(false);
+    }//GEN-LAST:event_irSalasInicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,7 +239,7 @@ public class SALAS_BUTACAS extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton irSalasInicio;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;

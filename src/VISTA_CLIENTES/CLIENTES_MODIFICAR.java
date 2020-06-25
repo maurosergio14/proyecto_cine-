@@ -38,7 +38,7 @@ public class CLIENTES_MODIFICAR extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        volverInicioClientes = new javax.swing.JButton();
         bActualizar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -60,10 +60,15 @@ public class CLIENTES_MODIFICAR extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MODIFICAR CLIENTE");
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(243, 113, 33));
-        jButton2.setText("Volver");
+        volverInicioClientes.setBackground(new java.awt.Color(255, 255, 255));
+        volverInicioClientes.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        volverInicioClientes.setForeground(new java.awt.Color(243, 113, 33));
+        volverInicioClientes.setText("Volver");
+        volverInicioClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverInicioClientesActionPerformed(evt);
+            }
+        });
 
         bActualizar.setBackground(new java.awt.Color(255, 255, 255));
         bActualizar.setFont(new java.awt.Font("Tahoma", 1, 32)); // NOI18N
@@ -149,7 +154,7 @@ public class CLIENTES_MODIFICAR extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(335, 335, 335)
-                        .addComponent(jButton2))
+                        .addComponent(volverInicioClientes))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addComponent(jLabel6)
@@ -185,7 +190,7 @@ public class CLIENTES_MODIFICAR extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(bActualizar)
                 .addGap(23, 23, 23)
-                .addComponent(jButton2)
+                .addComponent(volverInicioClientes)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -219,6 +224,39 @@ public class CLIENTES_MODIFICAR extends javax.swing.JFrame {
     private void cbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbClienteActionPerformed
+
+    private void volverInicioClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverInicioClientesActionPerformed
+        // TODO add your handling code here:
+        CLIENTES_INICIO irInicioClientes = new CLIENTES_INICIO();
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(CLIENTES_INICIO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CLIENTES_INICIO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CLIENTES_INICIO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CLIENTES_INICIO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CLIENTES_INICIO().setVisible(true);
+            }
+        });
+        this.setVisible(false);
+    }//GEN-LAST:event_volverInicioClientesActionPerformed
 
     private void cargarCliente(){
         for(Cliente item:listaCliente){
@@ -265,7 +303,6 @@ public class CLIENTES_MODIFICAR extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bActualizar;
     private javax.swing.JComboBox<Cliente> cbCliente;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -277,5 +314,6 @@ public class CLIENTES_MODIFICAR extends javax.swing.JFrame {
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JButton volverInicioClientes;
     // End of variables declaration//GEN-END:variables
 }

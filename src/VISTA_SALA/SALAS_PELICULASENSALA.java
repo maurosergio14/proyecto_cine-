@@ -31,7 +31,7 @@ public class SALAS_PELICULASENSALA extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        irSalasInicio = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
@@ -68,10 +68,15 @@ public class SALAS_PELICULASENSALA extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(243, 113, 33));
-        jButton1.setText("Volver");
+        irSalasInicio.setBackground(new java.awt.Color(255, 255, 255));
+        irSalasInicio.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        irSalasInicio.setForeground(new java.awt.Color(243, 113, 33));
+        irSalasInicio.setText("Volver");
+        irSalasInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                irSalasInicioActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setBackground(new java.awt.Color(243, 113, 33));
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -93,7 +98,7 @@ public class SALAS_PELICULASENSALA extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(330, 330, 330)
-                        .addComponent(jButton1)))
+                        .addComponent(irSalasInicio)))
                 .addContainerGap(128, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
@@ -117,7 +122,7 @@ public class SALAS_PELICULASENSALA extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
-                .addComponent(jButton1)
+                .addComponent(irSalasInicio)
                 .addGap(23, 23, 23))
         );
 
@@ -134,6 +139,36 @@ public class SALAS_PELICULASENSALA extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void irSalasInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irSalasInicioActionPerformed
+        // TODO add your handling code here:
+        SALAS irInicioSalas = new SALAS();
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SALAS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SALAS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SALAS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SALAS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SALAS().setVisible(true);
+            }
+        });
+        this.setVisible(false);
+    }//GEN-LAST:event_irSalasInicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,7 +206,7 @@ public class SALAS_PELICULASENSALA extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton irSalasInicio;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

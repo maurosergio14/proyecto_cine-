@@ -36,8 +36,8 @@ public class PELICULAS_INICIO extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        irGenerarTicket = new javax.swing.JButton();
+        irAdminPeliculas = new javax.swing.JButton();
         irInicio = new javax.swing.JButton();
         cbPelicula = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -52,25 +52,25 @@ public class PELICULAS_INICIO extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("PELICULAS");
 
-        jButton2.setBackground(new java.awt.Color(245, 163, 26));
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(51, 51, 51));
-        jButton2.setText("GENERAR TICKET DE COMPRA");
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        irGenerarTicket.setBackground(new java.awt.Color(245, 163, 26));
+        irGenerarTicket.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        irGenerarTicket.setForeground(new java.awt.Color(51, 51, 51));
+        irGenerarTicket.setText("GENERAR TICKET DE COMPRA");
+        irGenerarTicket.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        irGenerarTicket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                irGenerarTicketActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(245, 163, 26));
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(51, 51, 51));
-        jButton4.setText("ADMINISTRACION DE PELICULAS");
-        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        irAdminPeliculas.setBackground(new java.awt.Color(245, 163, 26));
+        irAdminPeliculas.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        irAdminPeliculas.setForeground(new java.awt.Color(51, 51, 51));
+        irAdminPeliculas.setText("ADMINISTRACION DE PELICULAS");
+        irAdminPeliculas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        irAdminPeliculas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                irAdminPeliculasActionPerformed(evt);
             }
         });
 
@@ -115,7 +115,7 @@ public class PELICULAS_INICIO extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4)
+                        .addComponent(irAdminPeliculas)
                         .addGap(176, 176, 176))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -125,7 +125,7 @@ public class PELICULAS_INICIO extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(274, 274, 274)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
+                    .addComponent(irGenerarTicket)
                     .addComponent(cbPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(195, Short.MAX_VALUE))
         );
@@ -145,9 +145,9 @@ public class PELICULAS_INICIO extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(78, 78, 78)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(irGenerarTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(irAdminPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
         );
 
@@ -171,13 +171,69 @@ public class PELICULAS_INICIO extends javax.swing.JFrame {
         }
     }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void irGenerarTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irGenerarTicketActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        PELICULAS_GENERAR_TICKET irGenerarTicket = new PELICULAS_GENERAR_TICKET(); 
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_GENERAR_TICKET.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_GENERAR_TICKET.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_GENERAR_TICKET.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_GENERAR_TICKET.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+      
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PELICULAS_GENERAR_TICKET().setVisible(true);
+            }
+        });
+        this.setVisible(false);
+    }//GEN-LAST:event_irGenerarTicketActionPerformed
+
+    private void irAdminPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irAdminPeliculasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        PELICULAS_ADMIN irAdminPelicula = new PELICULAS_ADMIN();
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_ADMIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_ADMIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_ADMIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PELICULAS_ADMIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PELICULAS_ADMIN().setVisible(true);
+            }
+        });
+        this.setVisible(false);
+    }//GEN-LAST:event_irAdminPeliculasActionPerformed
 
     private void irInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irInicioActionPerformed
         INICIO irInicio = new INICIO();
@@ -250,9 +306,9 @@ public class PELICULAS_INICIO extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Pelicula> cbPelicula;
+    private javax.swing.JButton irAdminPeliculas;
+    private javax.swing.JButton irGenerarTicket;
     private javax.swing.JButton irInicio;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

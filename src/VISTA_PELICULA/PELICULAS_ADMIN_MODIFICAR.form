@@ -61,7 +61,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="279" max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="irAdminPeliculas" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
@@ -133,7 +133,7 @@
                   <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                   <Component id="bModificar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="77" max="-2" attributes="0"/>
+                  <Component id="irAdminPeliculas" min="-2" pref="77" max="-2" attributes="0"/>
                   <EmptySpace pref="38" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -151,7 +151,7 @@
             <Property name="text" type="java.lang.String" value="MODIFICAR:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="irAdminPeliculas">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -164,6 +164,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Volver"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="irAdminPeliculasActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bModificar">
           <Properties>

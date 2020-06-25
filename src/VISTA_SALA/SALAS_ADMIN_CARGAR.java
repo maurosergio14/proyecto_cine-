@@ -29,7 +29,7 @@ public class SALAS_ADMIN_CARGAR extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        irSalasInicio = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -47,10 +47,15 @@ public class SALAS_ADMIN_CARGAR extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("CARGAR:");
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(243, 113, 33));
-        jButton2.setText("Volver");
+        irSalasInicio.setBackground(new java.awt.Color(255, 255, 255));
+        irSalasInicio.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        irSalasInicio.setForeground(new java.awt.Color(243, 113, 33));
+        irSalasInicio.setText("Volver");
+        irSalasInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                irSalasInicioActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 32)); // NOI18N
@@ -107,7 +112,7 @@ public class SALAS_ADMIN_CARGAR extends javax.swing.JFrame {
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(94, 94, 94))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(irSalasInicio)
                         .addGap(335, 335, 335))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,7 +135,7 @@ public class SALAS_ADMIN_CARGAR extends javax.swing.JFrame {
                 .addGap(84, 84, 84)
                 .addComponent(jButton4)
                 .addGap(75, 75, 75)
-                .addComponent(jButton2)
+                .addComponent(irSalasInicio)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -147,6 +152,36 @@ public class SALAS_ADMIN_CARGAR extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void irSalasInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irSalasInicioActionPerformed
+        // TODO add your handling code here:
+        SALAS irInicioSalas = new SALAS();
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SALAS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SALAS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SALAS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SALAS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SALAS().setVisible(true);
+            }
+        });
+        this.setVisible(false);
+    }//GEN-LAST:event_irSalasInicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,7 +226,7 @@ public class SALAS_ADMIN_CARGAR extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton irSalasInicio;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
