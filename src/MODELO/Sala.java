@@ -1,21 +1,24 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package MODELO;
 
-import java.util.List;
-import java.util.Map;
-
 /**
- * @author grupo 4
+ *
+ * @author Dani Barros
  */
 public class Sala {
-
+    
     private int id_sala;
     private String ubicacion;
+
+        
+    public Sala(){}
     
-
-     public Sala() {
-    }
-
     public Sala(String ubicacion) {
+        this.id_sala = id_sala;
         this.ubicacion = ubicacion;
     }
 
@@ -39,4 +42,6 @@ public class Sala {
     public String toString() {
         return "Sala{" + "id_sala=" + id_sala + ", ubicacion=" + ubicacion + '}';
     }
+    
+    
 }

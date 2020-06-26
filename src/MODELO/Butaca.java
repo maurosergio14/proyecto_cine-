@@ -1,23 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package MODELO;
 
 /**
- * @author grupo 4
+ *
+ * @author Dani Barros
  */
 public class Butaca {
-
-    private int id_butaca = -1;
-    private FuncionVerPelicula verPelicula; 
+    
+    private int id_butaca;
+    private VerPelicula verPelicula;
     private int fila;
     private int columna;
     private boolean estado;
 
-    public Butaca() {
-    }
-
+    public Butaca(){}
     
-    
-    public Butaca(FuncionVerPelicula verPelicula, int fila, int columna, boolean estado) {
-        this.verPelicula = verPelicula;
+    public Butaca(VerPelicula pelicula, int fila, int columna, boolean estado) {
+        this.verPelicula = pelicula;
         this.fila = fila;
         this.columna = columna;
         this.estado = estado;
@@ -31,12 +34,12 @@ public class Butaca {
         this.id_butaca = id_butaca;
     }
 
-    public FuncionVerPelicula getVerPelicula() {
+    public VerPelicula getPelicula() {
         return verPelicula;
     }
 
-    public void setVerPelicula(FuncionVerPelicula verPelicula) {
-        this.verPelicula = verPelicula;
+    public void setPelicula(VerPelicula pelicula){
+        this.verPelicula = pelicula;
     }
 
     public int getFila() {
@@ -55,18 +58,18 @@ public class Butaca {
         this.columna = columna;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-
+    
     @Override
     public String toString() {
-        return "Butaca{" + "id_butaca=" + id_butaca + ", verPelicula=" + verPelicula + ", fila=" + fila + ", columna=" + columna + ", estado=" + estado + '}';
+        return "Butaca{" + "id_butaca=" + id_butaca + ", pelicula=" + verPelicula + ", fila=" + fila + ", columna=" + columna + ", estado=" + estado + '}';
     }
     
-   
+    
 }

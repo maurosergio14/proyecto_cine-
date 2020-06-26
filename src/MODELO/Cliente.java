@@ -1,44 +1,32 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package MODELO;
 
 /**
- * @author grupo 4
+ *
+ * @author Dani Barros
  */
 public class Cliente {
-
+    
    private int id_cliente;
-
-   //private int id_cliente=-1;
-
    private String nombre;
    private String apellido;
    private int dni;
 
-    public Cliente() {
-    }
-
-    public Cliente(String nombre, String apellido) {
+   
+   
+    public Cliente(){}
+    
+    
+    public Cliente(String nombre, String apellido, int dni) {
         this.nombre = nombre;
         this.apellido = apellido;
-    }
-
-
-    public Cliente(String nombre, String apellido,int dni) {
-
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni=dni;
-    }
-
-    public int getDni() {
-        return dni;
-    }
-
-    public void setDni(int dni) {
         this.dni = dni;
     }
 
-    
     public int getId_cliente() {
         return id_cliente;
     }
@@ -46,7 +34,7 @@ public class Cliente {
     public void setId_cliente(int id_cliente) {
         this.id_cliente = id_cliente;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
@@ -63,16 +51,18 @@ public class Cliente {
         this.apellido = apellido;
     }
 
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
     @Override
     public String toString() {
-
-        return  "Id: "+ id_cliente + " "+nombre+" "+ apellido + " dni: " + dni ;
+        return "Cliente{" + "id_cliente=" + id_cliente + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + '}';
     }
-
-      
-
    
-
-  
-    
-    }
+   
+}

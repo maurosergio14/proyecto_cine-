@@ -1,35 +1,39 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package MODELO;
-import java.text.ParseException;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+
 /**
- * @author grupo 4
+ *
+ * @author Dani Barros
  */
 public class Ticket {
+    
     private int id_ticket;
-    private Cliente cliente;
-    private Sala sala;
-    private Butaca butaca;
-    private FuncionVerPelicula verPelicula;
+    private int IDcliente;
+    private int IDsala;
+    private int IDbutaca;
+    private int pelicula;
     private String fecha;
     private String hora;
     private double monto;
     private boolean estado;
     private String metodoDePago;
 
-    public Ticket(Cliente cliente, Sala sala, Butaca butaca, FuncionVerPelicula verPelicula, String fecha, String hora, double monto, boolean estado, String metodoDePago) {
-        this.cliente = cliente;
-        this.sala = sala;
-        this.butaca = butaca;
-        this.verPelicula = verPelicula;
+    public Ticket(){}
+    
+    public Ticket(Cliente cliente, Sala sala, Butaca butaca, Pelicula pelicula, String fecha, String hora, double monto, boolean estado, String metodoDePago) {
+        this.IDcliente = cliente.getId_cliente();
+        this.IDsala = sala.getId_sala();
+        this.IDbutaca = butaca.getId_butaca();
+        this.pelicula = pelicula.getId_pelicula();
         this.fecha = fecha;
         this.hora = hora;
         this.monto = monto;
         this.estado = estado;
         this.metodoDePago = metodoDePago;
-    }
-
-    public Ticket() {
     }
 
     public int getId_ticket() {
@@ -40,40 +44,39 @@ public class Ticket {
         this.id_ticket = id_ticket;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public int getCliente() {
+        return IDcliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCliente(int cliente) {
+        this.IDcliente = cliente;
     }
 
-    public Sala getSala() {
-        return sala;
+    public int getSala() {
+        return IDsala;
     }
 
-    public void setSala(Sala sala) {
-        this.sala = sala;
+    public void setSala(int sala) {
+        this.IDsala = sala;
     }
 
-    public Butaca getButaca() {
-        return butaca;
+    public int getButaca() {
+        return IDbutaca;
     }
 
-    public void setButaca(Butaca butaca) {
-        this.butaca = butaca;
+    public void setButaca(int butaca) {
+        this.IDbutaca = butaca;
     }
 
-    public FuncionVerPelicula getVerPelicula() {
-        return verPelicula;
+    public int getVerPelicula() {
+        return pelicula;
     }
 
-    public void setVerPelicula(FuncionVerPelicula verPelicula) {
-        this.verPelicula = verPelicula;
+    public void setVerPelicula(int verPelicula) {
+        this.pelicula = verPelicula;
     }
 
-
-    public String getFecha(){
+    public String getFecha() {
         return fecha;
     }
 
@@ -81,7 +84,7 @@ public class Ticket {
         this.fecha = fecha;
     }
 
-    public String getHora(){
+    public String getHora() {
         return hora;
     }
 
@@ -97,7 +100,7 @@ public class Ticket {
         this.monto = monto;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
@@ -115,10 +118,9 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" + "id_ticket=" + id_ticket + ", cliente=" + cliente + ", sala=" + sala + ", butaca=" + butaca + ", verPelicula=" + verPelicula + ", fecha=" + fecha + ", hora=" + hora + ", monto=" + monto + ", estado=" + estado + ", metodoDePago=" + metodoDePago + '}';
+        return "Ticket{" + "id_ticket=" + id_ticket + ", cliente=" + IDcliente + ", sala=" + IDsala + ", butaca=" + IDbutaca + ", verPelicula=" + pelicula + ", fecha=" + fecha + ", hora=" + hora + ", monto=" + monto + ", estado=" + estado + ", metodoDePago=" + metodoDePago + '}';
     }
     
-
-   
-
+    
+    
 }
